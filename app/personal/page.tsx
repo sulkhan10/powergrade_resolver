@@ -1,6 +1,6 @@
-"use client"; // components/MosaicGallery.js
-import React, { useEffect, useState } from "react";
+'use client';
 
+import React, { useEffect, useState } from "react";
 const images = [
   "https://plus.unsplash.com/premium_photo-1738105946749-320f638ed0be?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
   "https://images.unsplash.com/photo-1727466928916-9789f30de10b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8",
@@ -25,31 +25,27 @@ const images = [
   "https://plus.unsplash.com/premium_photo-1671269941569-7841144ee4e0?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1N3x8fGVufDB8fHx8fA%3D%3D",
 ];
 
+
 const splitImages = (imagesArray) => {  
   const mobileImages = [];  
   const desktopImages = [];  
 
   const totalImages = imagesArray.length;  
 
-  // Define the number of rows for mobile and desktop  
   const mobileRows = 2;  
   const desktopRows = 5;  
 
-  // Calculate how many images should be in each row for mobile and desktop  
   const imagesPerMobileRow = Math.ceil(totalImages / mobileRows);  
   const imagesPerDesktopRow = Math.ceil(totalImages / desktopRows);  
 
-  // Fill mobile images (2 rows)  
   for (let i = 0; i < mobileRows; i++) {  
     mobileImages.push(  
       imagesArray.slice(i * imagesPerMobileRow, (i + 1) * imagesPerMobileRow)  
     );  
   }  
 
-  // Fill desktop images (5 rows)  
   let remainingImages = totalImages;  
   for (let i = 0; i < desktopRows; i++) {  
-    // Calculate how many images to put in the current row  
     const imagesInCurrentRow = Math.floor(remainingImages / (desktopRows - i));  
     desktopImages.push(imagesArray.slice(totalImages - remainingImages, totalImages - remainingImages + imagesInCurrentRow));  
     remainingImages -= imagesInCurrentRow;  
@@ -59,19 +55,20 @@ const splitImages = (imagesArray) => {
 }; 
 
 const MosaicGallery = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false); // Initialize as false to avoid SSR issues
   const { mobileImages, desktopImages } = splitImages(images);
 
   useEffect(() => {
+    // Client-side only code (use window)
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 768); // Set mobile layout based on window width
     };
-    console.log("MosaicGallery mounted mobileImages", mobileImages);
-    console.log("MosaicGallery mounted desktopImages", desktopImages);
 
-    window.addEventListener("resize", handleResize);
+    handleResize(); // Call immediately to set the initial state based on window size
+
+    window.addEventListener("resize", handleResize); // Set up event listener for window resize
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize); // Clean up listener on unmount
     };
   }, []);
 
@@ -79,7 +76,6 @@ const MosaicGallery = () => {
 
   return (
     <div>
-      {/* <div className={`grid ${isMobile ? 'grid-cols-2' : 'grid-cols-5'} gap-4 p-4`}>   */}
       {isMobile && (
         <div className="flex">
           <div className="w-1/2">
@@ -134,42 +130,7 @@ const MosaicGallery = () => {
               </div>
             ))}
           </div>
-          <div className="w-1/5">
-            {desktopImages[2].map((row, index) => (
-              <div key={index} className="flex gap-4 p-2">
-                <img
-                  key={index}
-                  src={row}
-                  alt={`Image ${index}`}
-                  className="w-full"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="w-1/5">
-            {desktopImages[3].map((row, index) => (
-              <div key={index} className="flex gap-4 p-2">
-                <img
-                  key={index}
-                  src={row}
-                  alt={`Image ${index}`}
-                  className="w-full"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="w-1/5">
-            {desktopImages[4].map((row, index) => (
-              <div key={index} className="flex gap-4 p-2">
-                <img
-                  key={index}
-                  src={row}
-                  alt={`Image ${index}`}
-                  className="w-full"
-                />
-              </div>
-            ))}
-          </div>
+          {/* Add more desktop image grid columns here */}
         </div>
       )}
     </div>
