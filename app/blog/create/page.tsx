@@ -1,3 +1,4 @@
+'use client'
 // components/CreateBlog.js
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
