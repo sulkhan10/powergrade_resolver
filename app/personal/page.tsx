@@ -130,6 +130,42 @@ const MosaicGallery = () => {
               </div>
             ))}
           </div>
+          <div className="w-1/5">
+            {desktopImages[2].map((row, index) => (
+              <div key={index} className="flex gap-4 p-2">
+                <img
+                  key={index}
+                  src={row}
+                  alt={`Image ${index}`}
+                  className="w-full"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="w-1/5">
+            {desktopImages[3].map((row, index) => (
+              <div key={index} className="flex gap-4 p-2">
+                <img
+                  key={index}
+                  src={row}
+                  alt={`Image ${index}`}
+                  className="w-full"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="w-1/5">
+            {desktopImages[4].map((row, index) => (
+              <div key={index} className="flex gap-4 p-2">
+                <img
+                  key={index}
+                  src={row}
+                  alt={`Image ${index}`}
+                  className="w-full"
+                />
+              </div>
+            ))}
+          </div>
           {/* Add more desktop image grid columns here */}
         </div>
       )}
