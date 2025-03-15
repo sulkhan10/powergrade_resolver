@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "type": "luts",
+    "link": "https://lynk.id/wilieeffendi/lJp6GEq",
+    "slug": "Street-Film-Emulation-LUTs",
+    "name": "Street Film Emulation LUTs",
+    "price": "IDR 50K",
+    "category": "PowerGrades",
+    "categorySlug": "powergrades",
+    "rating": 4.5,
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "reviews": 5,
+    "short_description": "Street Film Emulation LUTs are designed to give your videos a filmic look.",
+    "description": "A custom film emulation LUT inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Efendi.\nThese LUTs allow you to transform your digital footage into a stunning, cinematic experience that reflects the warmth and character of traditional street photography.\nWhat’s Inside: 6 LUTs designed for supported Rec709 and log profiles, enabling filmmakers and content creators to achieve a distinct and professional look with ease."
+  },
+  {
+    "id": 2,
+    "type": "powergrades",
+    "link": "https://lynk.id/wilieeffendi/Wx6JQQ1",
+    "slug": "Street-Film-Emulation-PowerGrades",
+    "name": "Street Film Emulation PowerGrades",
+    "price": "IDR 150K",
+    "category": "PowerGrades",
+    "categorySlug": "powergrades",
+    "short_description": "Street Film Emulation PowerGrades are designed to give your videos a filmic look.",
+    "description": "A custom film emulation PowerGrades inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Efendi.\nThese PowerGrades provide a comprehensive solution for color grading, allowing you to easily enhance your footage with rich tones and dynamic contrasts.\nPerfect for achieving that vintage street style, this set empowers creators to deliver visually compelling stories that resonate with their audience.",
+    "rating": 4.0,
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "reviews": 4
+  }
+]

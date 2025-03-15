@@ -1,103 +1,158 @@
-"use client"; // components/Header.js  
-import React, { useState, useEffect } from "react";  
-import Link from "next/link";  
-import {  
-  IoLogoInstagram,  
-  IoLogoTiktok,  
-  IoLogoYoutube,  
-  IoCartOutline,  
-  IoCloseOutline,  
-  IoGridOutline,  
-} from "react-icons/io5";  
+"use client"; // components/Header.js
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
-const Header = () => {  
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);  
+import Link from "next/link";
+import {
+  IoLogoInstagram,
+  IoLogoTiktok,
+  IoLogoYoutube,
+  IoCartOutline,
+  IoCloseOutline,
+  IoGridOutline,
+} from "react-icons/io5";
 
-  const toggleMobileMenu = () => {  
-    setIsMobileMenuOpen((prev) => !prev);  
-  };  
+const Header = () => {
+  const paramsNavigator = usePathname(); // Get dynamic slug from URL params
 
-  // Effect to manage body overflow  
-  useEffect(() => {  
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); // To ensure we are in the client
 
-    return () => {  
-      document.body.style.overflow = "auto";  
-    };  
-  }, [isMobileMenuOpen]);  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
-  // Effect to close mobile menu on resize  
-  useEffect(() => {  
-    const handleResize = () => {  
-      if (window.innerWidth >= 768) {  
-        setIsMobileMenuOpen(false);  
-      }  
-    };  
+  // Effect to manage body overflow
+  useEffect(() => {
+    setIsMounted(true); // Mark that we are mounted
+  }, []);
 
-    window.addEventListener("resize", handleResize);  
-    return () => {  
-      window.removeEventListener("resize", handleResize);  
-    };  
-  }, []);  
+  useEffect(() => {
+    if (isMounted) {
+      document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+    }
+    return () => {
+      if (isMounted) {
+        document.body.style.overflow = "auto";
+      }
+    };
+  }, [isMobileMenuOpen, isMounted]);
 
-  return (  
-    <header className="flex justify-between items-center p-4 bg-white z-99">  
-      <div className="hidden md:flex items-center space-x-4">  
-        <SocialLink href="https://www.youtube.com" icon={<IoLogoYoutube size={20} />} />  
-        <SocialLink href="https://www.instagram.com" icon={<IoLogoInstagram size={20} />} />  
-        <SocialLink href="https://www.tiktok.com" icon={<IoLogoTiktok size={20} />} />  
-      </div>  
-      <button onClick={toggleMobileMenu} className="md:hidden">  
-        {isMobileMenuOpen ? <IoCloseOutline size={20} /> : <IoGridOutline size={20} />}  
-      </button>  
-      <div className="flex flex-col items-center justify-center">  
-        <h1 className="text-md md:text-xl font-bold">Powergrade Resolver</h1>  
-        <nav className="hidden md:flex space-x-4 text-md mt-2">  
-          <NavLink href="/personal">Personal</NavLink>  
-          <NavLink href="/portfolio">Portfolio</NavLink>  
-          <NavLink href="/store">Store</NavLink>  
-          <NavLink href="/blog">Blog</NavLink>  
-        </nav>  
-      </div>  
-      <div className="flex items-center space-x-4">  
-        <div className="flex items-center">  
-          <IoCartOutline size={20} />  
-          <span className="ml-1">0</span>  
-        </div>  
-      </div>  
-      <MobileNav isOpen={isMobileMenuOpen} />  
-    </header>  
-  );  
-};  
+  // Effect to close mobile menu on resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
 
-const SocialLink = ({ href, icon }) => (  
-  <Link href={href} target="_blank" rel="noopener noreferrer">  
-    {icon}  
-  </Link>  
-);  
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-const NavLink = ({ href, children }) => (  
-  <Link href={href} className="text-gray-700">  
-    {children}  
-  </Link>  
-);  
+  return (
+    <header className="flex justify-between items-center p-4 bg-white z-99">
+      <div className="hidden md:flex items-center space-x-4">
+        <SocialLink
+          href="https://www.youtube.com"
+          icon={<IoLogoYoutube size={20} />}
+        />
+        <SocialLink
+          href="https://www.instagram.com"
+          icon={<IoLogoInstagram size={20} />}
+        />
+        <SocialLink
+          href="https://www.tiktok.com"
+          icon={<IoLogoTiktok size={20} />}
+        />
+      </div>
+      <button onClick={toggleMobileMenu} className="md:hidden">
+        {isMobileMenuOpen ? (
+          <IoCloseOutline size={20} />
+        ) : (
+          <IoGridOutline size={20} />
+        )}
+      </button>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-md md:text-xl font-bold">Powergrade Resolver</h1>
+        <nav className="hidden md:flex space-x-4 text-md mt-2">
+          <div className={paramsNavigator.includes("/portfolio") ? "font-semibold border-b border-b-gray-700" : ""}>  
+          <NavLink href="/portfolio">Portfolio</NavLink>
+          </div>
+        <div className={paramsNavigator.includes("/personal") ? "font-semibold border-b border-b-gray-700" : ""}>  
+        {/* <div className={paramsNavigator === "/personal" ? "font-bold" : ""}> */}
+            <NavLink href="/personal">Personal</NavLink>
+          </div>
+          <div className={paramsNavigator.includes("/store") ? "font-semibold border-b border-b-gray-700" : ""}>  
+            <NavLink href="/store">Store</NavLink>
+          </div>
+          <div className={paramsNavigator.includes("/blog") ? "font-semibold border-b border-b-gray-700" : ""}>  
+            <NavLink href="/blog">Blog</NavLink>
+          </div>
+        </nav>
+      </div>
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center">
+          <IoCartOutline size={20} />
+          <span className="ml-1">0</span>
+        </div>
+      </div>
+      <MobileNav
+      paramsNavigator={paramsNavigator}
+        toggleMobileMenu={toggleMobileMenu}
+        isOpen={isMobileMenuOpen}
+      />
+    </header>
+  );
+};
 
-const MobileNav = ({ isOpen }) => (  
-  <nav  
-    className={`flex-col items-center bg-white absolute top-[8vh] left-0 h-[93vh] w-screen justify-center ${  
-      isOpen ? "flex" : "hidden"  
-    }`}  
-  >  
-    <NavLink href="/personal" className="text-lg mb-4">Personal</NavLink>  
-    <NavLink href="/portfolio" className="text-lg mb-4">Portfolio</NavLink>  
-    <NavLink href="/store" className="text-lg font-bold mb-4">Store</NavLink>  
-    <NavLink href="/blog" className="text-lg mb-4">Blog</NavLink>  
-    <div className="flex space-x-4 mt-8">  
-      <SocialLink href="https://www.youtube.com" icon={<IoLogoYoutube size={20} />} />  
-      <SocialLink href="https://www.instagram.com" icon={<IoLogoInstagram size={20} />} />  
-      <SocialLink href="https://www.tiktok.com" icon={<IoLogoTiktok size={20} />} />  
-    </div>  
-  </nav>  
-);  
+const SocialLink = ({ href, icon }) => (
+  <Link href={href} target="_blank" rel="noopener noreferrer">
+    {icon}
+  </Link>
+);
 
-export default Header;  
+const NavLink = ({ href, children }) => (
+  <Link href={href} className="text-gray-700">
+    {children}
+  </Link>
+);
+
+const MobileNav = ({ isOpen, toggleMobileMenu,paramsNavigator }) => (
+  <nav
+    className={`flex-col items-center bg-white absolute top-[7vh] left-0 h-[93vh] w-screen justify-center ${
+      isOpen ? "flex" : "hidden"
+    }`}
+  >
+    <div className={paramsNavigator.includes("/portfolio") ? "font-semibold border-b border-b-gray-700 text-lg mb-4 " : "text-lg mb-4 "} onClick={toggleMobileMenu}>
+      <NavLink href="/portfolio">Portfolio</NavLink>
+    </div>
+    <div className={paramsNavigator.includes("/personal") ? "font-semibold border-b border-b-gray-700 text-lg mb-4 " : "text-lg mb-4 "} onClick={toggleMobileMenu}>
+      <NavLink href="/personal">Personal</NavLink>
+    </div>
+    <div className={paramsNavigator.includes("/store") ? "font-semibold border-b border-b-gray-700 text-lg mb-4 " : "text-lg mb-4 "} onClick={toggleMobileMenu}>
+      <NavLink href="/store">Store</NavLink>
+    </div>
+    <div className={paramsNavigator.includes("/blog") ? "font-semibold border-b border-b-gray-700 text-lg mb-4 " : "text-lg mb-4 "} onClick={toggleMobileMenu}>
+      <NavLink href="/blog">Blog</NavLink>
+    </div>
+    <div className="flex space-x-4 mt-8">
+      <SocialLink
+        href="https://www.youtube.com"
+        icon={<IoLogoYoutube size={20} />}
+      />
+      <SocialLink
+        href="https://www.instagram.com"
+        icon={<IoLogoInstagram size={20} />}
+      />
+      <SocialLink
+        href="https://www.tiktok.com"
+        icon={<IoLogoTiktok size={20} />}
+      />
+    </div>
+  </nav>
+);
+
+export default Header;

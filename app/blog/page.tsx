@@ -33,7 +33,7 @@ const posts = [
   // Add more posts as needed  
 ];  
 
-const BlogPage = () => {  
+const BlogPageV2 = () => {  
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -47,6 +47,7 @@ const BlogPage = () => {
     fetchBlogs();
   }, []);
   return (  
+    
     <div className="container mx-auto px-4">  
       <h1 className="text-md  my-12 text-center self-center">Photography - Gear - Editing</h1>  
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">  
@@ -65,6 +66,27 @@ const BlogPage = () => {
         ))}  
       </div>  
     </div>  
+  );  
+};  
+const BlogPage = () => {  
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const res = await fetch('/api/blogs');
+      const data = await res.json();
+      console.log(data, "DATA BLOG")
+      console.log(res, "DATA BLOG")
+      setBlogs(data);
+    };
+    fetchBlogs();
+  }, []);
+  return (  
+    
+    <div className="grid h-[70vh] place-content-center bg-white px-4">
+    <h1 className="uppercase tracking-widest text-gray-500">Blog and Article Section</h1>
+    <h1 className="uppercase tracking-widest text-gray-500 text-center">Coming Soon</h1>
+  </div>
   );  
 };  
 
