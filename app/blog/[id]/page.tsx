@@ -35,24 +35,24 @@ const posts = [
 ];  
 
 const PostDetail = ({ params }) => {  
-  const { id } = params;  
+  // const { id } = params;  
 
-  const post = posts[Number(id)]; // Get the post based on the id  
+  // const post = posts[Number(id)]; // Get the post based on the id  
 
-  if (!post) {  
-    notFound(); // Redirect to 404 page if post not found  
-  }  
+  // if (!post) {  
+  //   notFound(); // Redirect to 404 page if post not found  
+  // }  
 
 useEffect(()=>{
-  console.log(params)
+  // console.log(params)
 },[])
 
   return (  
     <div className="container mx-auto px-4">  
-      <h1 className="text-3xl font-bold my-4">{post.title}</h1>  
+      {/* <h1 className="text-3xl font-bold my-4">{post.title}</h1>  
       <div className="text-sm text-gray-500">{post.category} • {post.date}</div>  
       <img src={post.image} alt={post.title} className="w-full h-48 object-cover my-4" />  
-      <p className="text-gray-600">{post.description}</p>  
+      <p className="text-gray-600">{post.description}</p>   */}
       {/* Add more details about the post here */}  
     </div>  
   );  
