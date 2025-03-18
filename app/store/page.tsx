@@ -1,7 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import products from '../../data/products.json'
+import { useState } from 'react';
+import products from '../../data/products.json';
 const categories = [
   
   {
@@ -59,7 +59,7 @@ const StorePage = () => {
                 }
               }
               }
-              key={index}             className={`cursor-pointer text-center text-gray-800 hover:text-gray-950 hover:font-semibold text-sm sm:text-base ${selectedCategory === category.categorySlug ? 'font-bold' : ''}`}  
+              key={index}             className={`cursor-pointer  sm:text-left text-gray-800 hover:text-gray-950 hover:font-semibold text-sm sm:text-base ${selectedCategory === category.categorySlug ? 'font-bold' : ''}`}  
 >
                 {category.category}
               </li>
@@ -72,7 +72,7 @@ const StorePage = () => {
         {
           productsFiltered.length === 0 ? (
             <div className="text-center flex items-center sm:items-start justify-center sm:justify-start   h-[30vh] sm:h-[40vh] md:h-[70vh]">
-            <p className="uppercase tracking-widest text-xs text-gray-800">Product Not Found</p>
+            <p className="uppercase tracking-widest text-xs text-gray-800">Coming Soon</p>
             </div>
            
           ) : (

@@ -1,160 +1,173 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Image from "next/image";
+
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { RiCloseLargeLine } from "react-icons/ri";
+
 const images = [
-  "https://plus.unsplash.com/premium_photo-1738105946749-320f638ed0be?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
-  "https://images.unsplash.com/photo-1727466928916-9789f30de10b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8",
-  "https://images.unsplash.com/photo-1740672426138-6646e5bf9e0b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8",
-  "https://images.unsplash.com/photo-1740516367213-f2028a72b097?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
-  "https://plus.unsplash.com/premium_photo-1740708549031-fd00d8821c5b?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8",
-  "https://plus.unsplash.com/premium_photo-1663837827305-a3491793e162?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5fHx8ZW58MHx8fHx8",
-  "https://images.unsplash.com/photo-1737961755792-4175df6444b2?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740124659051-71da6ea354e0?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1663837827344-42a77bf88422?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740508905577-5fb7fea583df?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740487093135-a1280497b901?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740471230631-3275f3c8add1?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740504713072-2b634befcf6a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNnx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740564014446-f07ea2da269c?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740418953117-73dc083f23d2?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzNXx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740522620382-f91c18a2cb28?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzOHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1730828573993-0b2215b151cd?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0MXx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1675714692786-22ad175c9a76?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1740393076705-69922a4cce76?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0OHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1739831741061-b0e923c99e73?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0OXx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1671269941569-7841144ee4e0?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1N3x8fGVufDB8fHx8fA%3D%3D",
+  // "/assets/Still-2024-10-27-221111_1.1.1.jpg",
+  // "/assets/Still-2024-10-27-221316_1.2.1.jpg",
+  // "/assets/Still-2024-10-27-221540_1.3.1_1.3.2.jpg",
+  // "/assets/Still-2024-10-27-221946_1.4.1.jpg",
+  // "/assets/Still-2024-10-27-222117_1.5.1.jpg",
+  // "/assets/Still-2024-10-27-222306_1.6.1.jpg",
+  // "/assets/Still-2024-10-27-222407_1.7.1.jpg",
+  // "/assets/Still-2024-10-27-222532_1.8.1.jpg",
+  // "/assets/Still-2024-10-27-222911_1.9.1.jpg",
+  // "/assets/Still-2024-10-27-223257_1.10.1.jpg",
+  "/assets/DSCF0912.jpg",
+  "/assets/DSCF0921.jpg",
+  "/assets/DSCF0976.jpg",
+  "/assets/DSCF1006.jpg",
+  "/assets/DSCF0918.jpg",
+  "/assets/DSCF0926.jpg",
+  "/assets/DSCF1017.jpg",
+  "/assets/DSCF1018.jpg",
+  "/assets/DSCF0972.jpg",
+  "/assets/DSCF1036.jpg",
+  "/assets/DSCF1047.jpg",
+  "/assets/DSCF1048.jpg",
+  "/assets/DSCF1086.jpg",
+  "/assets/DSCF1061.jpg",
+  "/assets/DSCF1147.jpg",
+  "/assets/DSCF1153.jpg",
+  "/assets/DSCF1163.jpg",
+  "/assets/DSCF1154.jpg",
+  "/assets/DSCF1173.jpg",
+  "/assets/DSCF1183.jpg",
+  "/assets/DSCF1195.jpg",
+  "/assets/DSCF1196.jpg",
+  "/assets/DSCF1197.jpg",
+  "/assets/DSCF1198.jpg",
+ 
 ];
 
+const ImageGallery = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null);
+  const [startX, setStartX] = useState(null); // For swipe detection
 
-const splitImages = (imagesArray) => {  
-  const mobileImages = [];  
-  const desktopImages = [];  
+  const openFullScreen = (index) => {
+    setCurrentIndex(index);
+    setIsFullScreen(true);
+  };
 
-  const totalImages = imagesArray.length;  
+  const closeFullScreen = () => {
+    setIsFullScreen(false);
+    setCurrentIndex(null);
+  };
 
-  const mobileRows = 2;  
-  const desktopRows = 5;  
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-  const imagesPerMobileRow = Math.ceil(totalImages / mobileRows);  
-  const imagesPerDesktopRow = Math.ceil(totalImages / desktopRows);  
+  const prevImage = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
-  for (let i = 0; i < mobileRows; i++) {  
-    mobileImages.push(  
-      imagesArray.slice(i * imagesPerMobileRow, (i + 1) * imagesPerMobileRow)  
-    );  
-  }  
+  // Handle keyboard navigation
+  useEffect(() => {
+    if (!isFullScreen) return;
 
-  let remainingImages = totalImages;  
-  for (let i = 0; i < desktopRows; i++) {  
-    const imagesInCurrentRow = Math.floor(remainingImages / (desktopRows - i));  
-    desktopImages.push(imagesArray.slice(totalImages - remainingImages, totalImages - remainingImages + imagesInCurrentRow));  
-    remainingImages -= imagesInCurrentRow;  
-  }  
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "Escape") closeFullScreen();
+    };
 
-  return { mobileImages, desktopImages };  
-}; 
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isFullScreen]);
 
+  // Handle swipe navigation
+  const handleTouchStart = (e) => setStartX(e.touches[0].clientX);
+  const handleTouchEnd = (e) => {
+    if (!startX) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
 
-const Portfolio = () => {  
-  const [isMobile, setIsMobile] = useState(false);  
-  const [isFullScreen, setIsFullScreen] = useState(false);  
-  const [currentImage, setCurrentImage] = useState(null);  
-  
-  const { mobileImages, desktopImages } = splitImages(images);  
+    if (diff > 50) nextImage(); // Swipe left
+    if (diff < -50) prevImage(); // Swipe right
 
-  useEffect(() => {  
-    const handleResize = () => {  
-      setIsMobile(window.innerWidth < 768);  
-    };  
+    setStartX(null);
+  };
 
-    handleResize();  
-    
-    window.addEventListener("resize", handleResize);  
-    return () => {  
-      window.removeEventListener("resize", handleResize);  
-    };  
-  }, []);  
+  return (
+    <div>
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4, 1200: 5 }}
+      >
+        <Masonry>
+          {images.map((image, i) => (
+            <Image
+              key={i}
+              src={image}
+              alt=""
+              layout="responsive"
+              width={500}
+              height={500}
+              loading="lazy"
+              style={{ cursor: "pointer" }}
+              onClick={() => openFullScreen(i)}
+            />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
 
-  const displayedImages = isMobile ? mobileImages : desktopImages;  
+      {isFullScreen && currentIndex !== null && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 w-full h-full bg-white/70 flex items-center justify-center z-500"
+          // onClick={closeFullScreen}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Display full-screen image */}
+          <div className="relative w-[85%] h-[80%]">
+            <Image
+              src={images[currentIndex]}
+              alt="Full screen"
+              fill
+              className="object-contain"
+            />
+          </div>
 
-  const openFullScreen = (image) => {  
-      setCurrentImage(image);  
-      setIsFullScreen(true);  
-  };  
+          {/* Right navigation  */}
+          <button
+            className="absolute left-0   flex items-center justify-center text-md lg:text-3xl  bg-opacity-50  w-10 h-10 lg:h-20 lg:w-20 rounded-full lg:opacity-45 hover:opacity-75"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+          >
+            <IoIosArrowBack />
+          </button>
+          <button
+            className="absolute right-0   flex items-center justify-center text-md lg:text-3xl  bg-opacity-50  h-10 w-10 lg:h-20 lg:w-20 rounded-full  lg:opacity-45 hover:opacity-75"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+          >
+            <IoIosArrowForward />
+          </button>
 
-  const closeFullScreen = () => {  
-      setIsFullScreen(false);  
-      setCurrentImage(null);  
-  };  
+          {/* Close button */}
+          <button
+            className="absolute top-4   right-4  text-gray text-2xl  bg-opacity-50  bg-opacity-50  h-10 w-10 lg:h-20 lg:w-20 rounded-full  lg:opacity-45 hover:opacity-95"
+            onClick={closeFullScreen}
+          >
+            <RiCloseLargeLine />
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
-  return (  
-    <div className="relative">  
-      {isFullScreen && (  
-        <div   
-          className="fixed top-0 left-0 w-full h-full z-999 bg-black flex items-center justify-center"   
-          onClick={closeFullScreen}  
-        >  
-          <img  
-            src={currentImage}  
-            alt="Full screen"  
-            className="max-w-full max-h-full"  
-          />  
-          <button   
-            className="absolute top-4 right-4 text-white text-2xl"  
-            onClick={closeFullScreen}  
-          >  
-            &times; {/* X icon to close */}  
-          </button>  
-        </div>  
-      )}  
-      {isMobile ? (  
-        <div className="flex">  
-          <div className="w-1/2">  
-            {mobileImages[0].map((row, index) => (  
-              <div key={index} className="flex gap-4 p-2">  
-                <img  
-                  src={row}  
-                  alt={`Image ${index}`}  
-                  className="w-full cursor-pointer"  
-                  onClick={() => openFullScreen(row)} // Open full-screen on click  
-                />  
-              </div>  
-            ))}  
-          </div>  
-          <div className="w-1/2">  
-            {mobileImages[1].map((row, index) => (  
-              <div key={index} className="flex gap-4 p-2">  
-                <img  
-                  src={row}  
-                  alt={`Image ${index}`}  
-                  className="w-full cursor-pointer"  
-                  onClick={() => openFullScreen(row)} // Open full-screen on click  
-                />  
-              </div>  
-            ))}  
-          </div>  
-        </div>  
-      ) : (  
-        <div className="flex">  
-          {desktopImages.map((desktopRow, rowIndex) => (  
-            <div key={rowIndex} className="w-1/5">  
-              {desktopRow.map((image, index) => (  
-                <div key={index} className="flex gap-4 p-2">  
-                  <img  
-                    src={image}  
-                    alt={`Image ${index}`}  
-                    className="w-full cursor-pointer"  
-                    onClick={() => openFullScreen(image)} // Open full-screen on click  
-                  />  
-                </div>  
-              ))}  
-            </div>  
-          ))}  
-        </div>  
-      )}  
-    </div>  
-  );  
-};  
-
-export default Portfolio;  
-
+export default ImageGallery;

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PowerGrade",
-  description: "PowerGrade",
+  title: "Wilie Effendi",
+  description: "Wilie Effendi Personal Website",
 };
 
 export default function RootLayout({

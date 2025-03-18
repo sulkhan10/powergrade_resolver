@@ -1,15 +1,13 @@
 "use client"; // components/Header.js
-import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import {
-  IoLogoInstagram,
-  IoLogoTiktok,
-  IoLogoYoutube,
-  IoCartOutline,
   IoCloseOutline,
   IoGridOutline,
+  IoLogoInstagram,
+  IoLogoTiktok
 } from "react-icons/io5";
 
 const Header = () => {
@@ -55,16 +53,18 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-white z-99">
       <div className="hidden md:flex items-center space-x-4">
+        {/*
         <SocialLink
           href="https://www.youtube.com"
           icon={<IoLogoYoutube size={20} />}
         />
+         */}
         <SocialLink
-          href="https://www.instagram.com"
+          href="https://www.instagram.com/wilieeffendi"
           icon={<IoLogoInstagram size={20} />}
         />
         <SocialLink
-          href="https://www.tiktok.com"
+          href="https://www.tiktok.com/@wilieeffendi"
           icon={<IoLogoTiktok size={20} />}
         />
       </div>
@@ -76,7 +76,14 @@ const Header = () => {
         )}
       </button>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-md md:text-xl font-bold">Powergrade Resolver</h1>
+        <h1 onClick={
+          ()=>{
+            isMobileMenuOpen ? setIsMobileMenuOpen(false) : null
+          }
+        } className="text-md md:text-xl font-bold">
+          
+          <NavLink  href="/">Wilie Effendi</NavLink>
+          </h1>
         <nav className="hidden md:flex space-x-4 text-md mt-2">
           <div className={paramsNavigator.includes("/portfolio") ? "font-semibold border-b border-b-gray-700" : ""}>  
           <NavLink href="/portfolio">Portfolio</NavLink>
@@ -94,10 +101,12 @@ const Header = () => {
         </nav>
       </div>
       <div className="flex items-center space-x-4">
+        {/*
         <div className="flex items-center">
           <IoCartOutline size={20} />
           <span className="ml-1">0</span>
         </div>
+          */}
       </div>
       <MobileNav
       paramsNavigator={paramsNavigator}
@@ -122,7 +131,7 @@ const NavLink = ({ href, children }) => (
 
 const MobileNav = ({ isOpen, toggleMobileMenu,paramsNavigator }) => (
   <nav
-    className={`flex-col items-center bg-white absolute top-[7vh] left-0 h-[93vh] w-screen justify-center ${
+    className={`flex-col items-center bg-white absolute top-[6vh] left-0 h-[94vh] w-screen justify-center ${
       isOpen ? "flex" : "hidden"
     }`}
   >
@@ -139,16 +148,18 @@ const MobileNav = ({ isOpen, toggleMobileMenu,paramsNavigator }) => (
       <NavLink href="/blog">Blog</NavLink>
     </div>
     <div className="flex space-x-4 mt-8">
+      {/*
       <SocialLink
         href="https://www.youtube.com"
         icon={<IoLogoYoutube size={20} />}
       />
+       */}
       <SocialLink
-        href="https://www.instagram.com"
+        href="https://www.instagram.com/wilieeffendi"
         icon={<IoLogoInstagram size={20} />}
       />
       <SocialLink
-        href="https://www.tiktok.com"
+        href="https://www.tiktok.com/@wilieeffendi"
         icon={<IoLogoTiktok size={20} />}
       />
     </div>

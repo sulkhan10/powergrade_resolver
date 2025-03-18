@@ -1,7 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; // For App Router
-import products from "../../../data/products.json";
+import { useEffect, useState } from 'react';
 
 const productDetails = {
   "v2-presets": {
@@ -38,7 +37,7 @@ const ProductDetail = () => {
   }
 
   if (!product) {
-    return <div>Product not found</div>;
+    return <div>Coming Soon</div>;
   }
 
   return (
