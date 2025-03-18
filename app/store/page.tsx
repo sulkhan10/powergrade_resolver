@@ -81,7 +81,7 @@ const StorePage = () => {
             {productsFiltered.map((product, index) => (
               <Link key={index} href={`/store/${product.slug}`} className="overflow-hidden flex flex-col">
                 <img
-                  src={product.image[0]}
+                  src={product.main_image}
                   alt={product.name}
                   className="w-full object-cover aspect-square"
                 />

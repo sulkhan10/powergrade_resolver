@@ -2,6 +2,7 @@
   {
     "id": 1,
     "type": "luts",
+    "main_image": "/assets/IMG_4952.png",
     "link": "https://lynk.id/wilieeffendi/lJp6GEq",
     "slug": "Street-Film-Emulation-LUTs",
     "name": "Street Film Emulation LUTs",
@@ -13,6 +14,28 @@
       "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
       "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
     ],
+    "gallery": [
+      "/assets/IMG_4929.png",
+      "/assets/IMG_4930.png",
+      "/assets/IMG_4931.png",
+      "/assets/IMG_4932.png",
+      "/assets/IMG_4933.png",
+      "/assets/IMG_4934.png",
+      "/assets/IMG_4935.png",
+      "/assets/IMG_4937.png",
+      "/assets/IMG_4938.png",
+      "/assets/IMG_4939.png",
+      "/assets/IMG_4940.png",
+      "/assets/IMG_4941.png",
+      "/assets/IMG_4942.png",
+      "/assets/IMG_4943.png",
+      "/assets/IMG_4944.png",
+      "/assets/IMG_4945.png",
+      "/assets/IMG_4946.png",
+      "/assets/IMG_4947.png",
+      "/assets/IMG_4948.png",
+      "/assets/IMG_4949.png"
+    ],
     "reviews": 5,
     "short_description": "Street Film Emulation LUTs are designed to give your videos a filmic look.",
     "description": "A custom film emulation LUT inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Efendi.\nThese LUTs allow you to transform your digital footage into a stunning, cinematic experience that reflects the warmth and character of traditional street photography.\nWhat’s Inside: 6 LUTs designed for supported Rec709 and log profiles, enabling filmmakers and content creators to achieve a distinct and professional look with ease."
@@ -20,6 +43,7 @@
   {
     "id": 2,
     "type": "powergrades",
+    "main_image": "/assets/IMG_4950.png",
     "link": "https://lynk.id/wilieeffendi/Wx6JQQ1",
     "slug": "Street-Film-Emulation-PowerGrades",
     "name": "Street Film Emulation PowerGrades",
@@ -29,6 +53,28 @@
     "short_description": "Street Film Emulation PowerGrades are designed to give your videos a filmic look.",
     "description": "A custom film emulation PowerGrades inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Efendi.\nThese PowerGrades provide a comprehensive solution for color grading, allowing you to easily enhance your footage with rich tones and dynamic contrasts.\nPerfect for achieving that vintage street style, this set empowers creators to deliver visually compelling stories that resonate with their audience.",
     "rating": 4.0,
+    "gallery": [
+      "/assets/IMG_4929.png",
+      "/assets/IMG_4930.png",
+      "/assets/IMG_4931.png",
+      "/assets/IMG_4932.png",
+      "/assets/IMG_4933.png",
+      "/assets/IMG_4934.png",
+      "/assets/IMG_4935.png",
+      "/assets/IMG_4937.png",
+      "/assets/IMG_4938.png",
+      "/assets/IMG_4939.png",
+      "/assets/IMG_4940.png",
+      "/assets/IMG_4941.png",
+      "/assets/IMG_4942.png",
+      "/assets/IMG_4943.png",
+      "/assets/IMG_4944.png",
+      "/assets/IMG_4945.png",
+      "/assets/IMG_4946.png",
+      "/assets/IMG_4947.png",
+      "/assets/IMG_4948.png",
+      "/assets/IMG_4949.png"
+    ],
     "image": [
       "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
       "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
