@@ -13,8 +13,8 @@ const categories = [
     categorySlug : "prints"
   },
   {
-    category : "Lightroom Presets",
-    categorySlug : "lightroom-presets"
+    category : "Presets",
+    categorySlug : "presets"
   },
   {
     category : "PowerGrades",
