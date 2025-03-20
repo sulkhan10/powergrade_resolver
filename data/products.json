@@ -1,5 +1,63 @@
 [
   {
+    "id": 3,
+    "type": "lightroom-preset",
+    "main_image": "/assets/ThumbnailLightroomPresetProduct.PNG",
+    "link": "https://lynk.id/wilieeffendi/kNzjWr5",
+    "slug": "analog-film-lightroom-presets",
+    "name": "Analog Film Lightroom Presets",
+    "price": "IDR 25K",
+    "category": "Lightroom Preset",
+    "categorySlug": "lightroom-presets",
+    "short_description": "",
+    "description": "Analog Film Lightroom Presets by Wilie Effendi is a premium Lightroom preset system crafted to enhance your images effortlessly, regardless of the genre—be it street, travel, portrait, and more.\n\n▶ Key Features:  \n➭ Instant Enhancement – Transform your photos with just one or two clicks.\n➭ Versatile Adjustments – Fine-tune dynamic range, color, texture, clarity, sharpening, and grain with quick actions.\n➭ Universal Compatibility – Designed to work seamlessly with Sony, Fuji, Ricoh, Nikon, and other cameras.\n\nThis preset system is built for maximum flexibility, allowing you to apply stunning edits to any type of photograph.\nThe included quick actions ensure that every preset adapts beautifully to your images.\n\n▶ Compatible with: Lightroom Classic and Lightroom (Desktop/Mobile).\n▶ Optimized for RAW images from all major camera brands.\n",
+    "rating": 4.0,
+    "three_cards" : [
+      "FEATURES\n\n\nLightroom preset system designed to elevate your images effortlessly, no matter the genre—street, travel, portrait, and beyond.\n\n\n▶ Instant Enhancement with One-Click Presets\n\n▶ Adaptive Adjustments for Dynamic Range, Color, and Texture\n\n▶ Designed for Any Photography Style\n\n▶ Works Seamlessly Across Multiple Devices\n\n▶ Fully Customizable to Suit Your Vision",
+      "PERFECT FOR\n\n\nPhotographers and creatives seeking a quick and effective way to achieve professional-quality edits without the hassle of complex adjustments.\\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
+      "COMPATIBILITY\n\n\nThese presets are specifically crafted for Lightroom, providing a versatile toolkit for photographers looking to enhance their images with ease. Each preset is optimized for RAW files and tested on various camera brands for consistent results.\n\n\n▶ Lightroom Desktop\n\n▶ Lightroom Mobile"
+    ],
+    "gallery": [
+      
+      "/assets/DSCF0912.jpg",
+      "/assets/DSCF0921.jpg",
+      "/assets/DSCF0976.jpg",
+      "/assets/DSCF1006.jpg",
+      "/assets/DSCF0918.jpg",
+      "/assets/DSCF0926.jpg",
+      "/assets/DSCF1017.jpg",
+      "/assets/DSCF1018.jpg",
+      "/assets/DSCF0972.jpg",
+      "/assets/DSCF1036.jpg",
+      "/assets/DSCF1047.jpg",
+      "/assets/DSCF1048.jpg",
+      "/assets/DSCF1086.jpg",
+      "/assets/DSCF1061.jpg",
+      "/assets/DSCF1147.jpg",
+      "/assets/DSCF1153.jpg",
+      "/assets/DSCF1163.jpg",
+      "/assets/DSCF1154.jpg",
+      "/assets/DSCF1173.jpg",
+      "/assets/DSCF1183.jpg",
+      "/assets/DSCF1195.jpg",
+      "/assets/DSCF1196.jpg",
+      "/assets/DSCF1197.jpg",
+      "/assets/DSCF1198.jpg"
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "software_compatibility": [
+      
+      {
+        "name": "Adobe Lightroom",
+        "image": "/assets/Light_Room_Logo.png"
+      }
+    ],
+    "reviews": 4
+  },
+  {
     "id": 1,
     "type": "luts",
     "main_image": "/assets/IMG_4952.png",
@@ -83,47 +141,6 @@
       }
     ],
     "reviews": 4
-  },
-  {
-    "id": 3,
-    "type": "lightroom-preset",
-    "main_image": "/assets/ThumbnailLightroomPresetProduct.PNG",
-    "link": "https://lynk.id/wilieeffendi/kNzjWr5",
-    "slug": "analog-film-lightroom-presets",
-    "name": "Analog Film Lightroom Presets",
-    "price": "IDR 25K",
-    "category": "Lightroom Preset",
-    "categorySlug": "lightroom-presets",
-    "short_description": "",
-    "description": "Analog Film Lightroom Presets by Wilie Effendi is a premium Lightroom preset system crafted to enhance your images effortlessly, regardless of the genre—be it street, travel, portrait, and more.\n\n▶ Key Features:  \n➭ Instant Enhancement – Transform your photos with just one or two clicks.\n➭ Versatile Adjustments – Fine-tune dynamic range, color, texture, clarity, sharpening, and grain with quick actions.\n➭ Universal Compatibility – Designed to work seamlessly with Sony, Fuji, Ricoh, Nikon, and other cameras.\n\nThis preset system is built for maximum flexibility, allowing you to apply stunning edits to any type of photograph.\nThe included quick actions ensure that every preset adapts beautifully to your images.\n\n▶ Compatible with: Lightroom Classic and Lightroom (Desktop/Mobile).\n▶ Optimized for RAW images from all major camera brands.\n",
-    "rating": 4.0,
-    "three_cards" : [
-      "FEATURES\n\n\nLightroom preset system designed to elevate your images effortlessly, no matter the genre—street, travel, portrait, and beyond.\n\n\n▶ Instant Enhancement with One-Click Presets\n\n▶ Adaptive Adjustments for Dynamic Range, Color, and Texture\n\n▶ Designed for Any Photography Style\n\n▶ Works Seamlessly Across Multiple Devices\n\n▶ Fully Customizable to Suit Your Vision",
-      "PERFECT FOR\n\n\nPhotographers and creatives seeking a quick and effective way to achieve professional-quality edits without the hassle of complex adjustments.\\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
-      "COMPATIBILITY\n\n\nThese presets are specifically crafted for Lightroom, providing a versatile toolkit for photographers looking to enhance their images with ease. Each preset is optimized for RAW files and tested on various camera brands for consistent results.\n\n\n▶ Lightroom Desktop\n\n▶ Lightroom Mobile"
-    ],
-    "gallery": [
-      
-      "/assets/IMG_4942.png",
-      "/assets/IMG_4943.png",
-      "/assets/IMG_4944.png",
-      "/assets/IMG_4945.png",
-      "/assets/IMG_4946.png",
-      "/assets/IMG_4947.png",
-      "/assets/IMG_4948.png",
-      "/assets/IMG_4949.png"
-    ],
-    "image": [
-      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
-      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
-    ],
-    "software_compatibility": [
-      
-      {
-        "name": "Adobe Lightroom",
-        "image": "/assets/Light_Room_Logo.png"
-      }
-    ],
-    "reviews": 4
   }
+ 
 ]
