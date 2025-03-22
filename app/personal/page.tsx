@@ -33,7 +33,7 @@ const Personal = () => {
             <p className="text-grey-600 w-full sm:w-[35rem] md:w-[30rem] lg:w-[25rem] mb-10">
               <p className="mb-4">
                 Hello, I'm Wilie Effendi, a passionate photographer and
-                videographer committed to capturing life's most beautiful
+                content creator committed to capturing life's most beautiful
                 moments. My journey in visual storytelling has led me to create
                 stunning images and videos that resonate with emotion and
                 artistry.
