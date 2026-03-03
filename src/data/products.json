@@ -1,0 +1,142 @@
+[
+  {
+    "id": 3,
+    "type": "lightroom-preset",
+    "main_image": "/assets/ThumbnailLightroomPresetProduct.PNG",
+    "link": "https://lynk.id/wilieeffendi/kNzjWr5",
+    "slug": "analog-film-lightroom-presets",
+    "name": "Analog Film Lightroom Presets",
+    "price": "IDR 25K",
+    "category": "Presets",
+    "categorySlug": "presets",
+    "short_description": "",
+    "description": "Analog Film Lightroom Presets by Wilie Effendi is a premium Lightroom preset system crafted to enhance your images effortlessly, regardless of the genre—be it street, travel, portrait, and more.\n\nWhat’s Inside: 4 Color Presets\n\n▶ Key Features:  \n➭ Instant Enhancement – Transform your photos with just one or two clicks.\n➭ Versatile Adjustments – Fine-tune dynamic range, color, texture, clarity, sharpening, and grain with quick actions.\n➭ Universal Compatibility – Designed to work seamlessly with Sony, Fuji, Ricoh, Nikon, and other cameras.\n\nThis preset system is built for maximum flexibility, allowing you to apply stunning edits to any type of photograph.\nThe included quick actions ensure that every preset adapts beautifully to your images.\n\n▶ Compatible with: Lightroom Classic and Lightroom (Desktop/Mobile).\n▶ Optimized for RAW images from all major camera brands.\n",
+    "rating": 4.0,
+    "three_cards" : [
+      "FEATURES\n\n\nLightroom preset system designed to elevate your images effortlessly, no matter the genre—street, travel, portrait, and beyond.\n\n\nWhat’s Inside: 4 Color Presets\n\n\n▶ Instant Enhancement with One-Click Presets\n\n▶ Adaptive Adjustments for Dynamic Range, Color, and Texture\n\n▶ Designed for Any Photography Style\n\n▶ Works Seamlessly Across Multiple Devices\n\n▶ Fully Customizable to Suit Your Vision",
+      "PERFECT FOR\n\n\nPhotographers and creatives seeking a quick and effective way to achieve professional-quality edits without the hassle of complex adjustments.\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
+      "COMPATIBILITY\n\n\nThese presets are specifically crafted for Lightroom, providing a versatile toolkit for photographers looking to enhance their images with ease. Each preset is optimized for RAW files and tested on various camera brands for consistent results.\n\n\n▶ Lightroom Desktop\n\n▶ Lightroom Mobile"
+    ],
+    "gallery": [
+      "/assets/DSCF0912.jpg",
+      "/assets/DSCF0921.jpg",
+      "/assets/DSCF0976.jpg",
+      "/assets/DSCF1006.jpg",
+      "/assets/DSCF0918.jpg",
+      "/assets/DSCF0926.jpg",
+      "/assets/DSCF1017.jpg",
+      "/assets/DSCF1018.jpg",
+      "/assets/DSCF0972.jpg",
+      "/assets/DSCF1036.jpg",
+      "/assets/DSCF1047.jpg",
+      "/assets/DSCF1048.jpg",
+      "/assets/DSCF1086.jpg",
+      "/assets/DSCF1061.jpg",
+      "/assets/DSCF1147.jpg",
+      "/assets/DSCF1153.jpg",
+      "/assets/DSCF1163.jpg",
+      "/assets/DSCF1154.jpg",
+      "/assets/DSCF1173.jpg",
+      "/assets/DSCF1183.jpg",
+      "/assets/DSCF1195.jpg",
+      "/assets/DSCF1196.jpg",
+      "/assets/DSCF1197.jpg",
+      "/assets/DSCF1198.jpg"
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "software_compatibility": [
+      {
+        "name": "Adobe Lightroom",
+        "image": "/assets/Light_Room_Logo.png"
+      }
+    ],
+    "reviews": 4
+  },
+  {
+    "id": 1,
+    "type": "luts",
+    "main_image": "/assets/IMG_4952.png",
+    "link": "https://lynk.id/wilieeffendi/lJp6GEq",
+    "slug": "street-film-emulation-luts",
+    "name": "Street Film Emulation LUTs",
+    "price": "IDR 50K",
+    "category": "LUTs",
+    "categorySlug": "luts",
+    "rating": 4.5,
+    "three_cards" : [
+      "FEATURES\n\n\nInstantly achieve a classic 35mm film appearance with LUTs that provide a timeless, cinematic quality to your footage, embodying the essence of analog film in a digital medium.\n\n\n▶ Effortless One-Click Color Grading\n\n▶ Works with Industry-Standard Software\n\n▶ Universal .cube File Format\n\n▶ Optimized for Each Camera and Log Profile\n\n▶ Perfect for In-Camera and On-Set Monitoring\n\n▶ Highly Customizable Options",
+      "PERFECT FOR\n\n\nFilmmakers aiming to craft breathtaking cinematic visuals with LUTs, offering a quick and easy way to achieve professional-grade film aesthetics while saving time and effort in post-production.\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
+      "COMPATIBILITY\n\n\nLUTs are designed to work with industry-standard video editing, color grading, and visual effects software, thanks to their universal .cube file format, which allows for smooth integration into your current workflow.\n\n\n▶ Davinci Resolve\n\n▶ Adobe Premiere Pro\n\n▶ Adobe After Effects\n\n▶ Final Cut Pro\n\n▶ Avid Media Composer\n\n▶ CapCut\n\n▶ and more..."
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "gallery": [
+      "/assets/IMG_4929.png",
+      "/assets/IMG_4930.png",
+      "/assets/IMG_4931.png",
+      "/assets/IMG_4932.png",
+      "/assets/IMG_4933.png",
+      "/assets/IMG_4934.png"
+    ],
+    "software_compatibility": [
+      {
+        "name": "DaVinci Resolve",
+        "image": "/assets/DaVinci_Resolve_Studio_Logo.webp"
+      },
+      {
+        "name": "Adobe Premiere Pro",
+        "image": "/assets/Premiere_Pro_Logo.webp"
+      },
+      {
+        "name": "Final Cut Pro",
+        "image": "/assets/Final_Cut_Pro_Logo.webp"
+      }
+    ],
+    "reviews": 5,
+    "short_description": "Street Film Emulation LUTs are designed to give your videos a filmic look.",
+    "description": "A custom film emulation LUT inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Effendi.\n\nThese LUTs allow you to transform your digital footage into a stunning, cinematic experience that reflects the warmth and character of traditional street photography.\n\nWhat’s Inside: 6 LUTs designed for supported Rec709 and log profiles, enabling filmmakers and content creators to achieve a distinct and professional look with ease."
+  },
+  {
+    "id": 2,
+    "type": "powergrades",
+    "main_image": "/assets/IMG_4950.png",
+    "link": "https://lynk.id/wilieeffendi/Wx6JQQ1",
+    "slug": "street-film-emulation-powergrades",
+    "name": "Street Film Emulation PowerGrades",
+    "price": "IDR 150K",
+    "category": "PowerGrades",
+    "categorySlug": "powergrades",
+    "short_description": "Street Film Emulation PowerGrades are designed to give your videos a filmic look.",
+    "description": "A custom film emulation PowerGrades inspired by the iconic aesthetics of classic 35mm film, crafted by Wilie Effendi.\n\nThese PowerGrades provide a comprehensive solution for color grading, allowing you to easily enhance your footage with rich tones and dynamic contrasts.\nPerfect for achieving that vintage street style, this set empowers creators to deliver visually compelling stories that resonate with their audience.",
+    "rating": 4.0,
+    "three_cards" : [
+      "FEATURES\n\n\nAchieve a classic 35mm film appearance with ease, thanks to a streamlined node workflow that requires just a few adjustments.\n\n\n▶ User-Friendly and Simple\n\n▶ 4 Main Nodes for Adjustments\n\n▶ Utilizes DaVinci Wide Gamut/Intermediate\n\n▶ Supports Any Camera LOG via Color Space Transform (CST)\n\n▶ Fully Customizable",
+      "PERFECT FOR\n\n\nFilmmakers and aspiring colorists looking to effortlessly produce breathtaking cinematic visuals through a simplified color grading process that saves time and effort.\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
+      "COMPATIBILITY\n\n\nPowerGrades are specifically designed for DaVinci Resolve, providing a variety of creative options for color grading. Fully customizable, they allow you to experiment with different combinations of curves, colors, and textures to achieve a look that is uniquely yours.\n\n\n▶ Davinci Resolve\n\n▶ Davinci Resolve"
+    ],
+    "gallery": [
+      "/assets/IMG_4935.png",
+      "/assets/IMG_4937.png",
+      "/assets/IMG_4938.png",
+      "/assets/IMG_4939.png",
+      "/assets/IMG_4940.png",
+      "/assets/IMG_4941.png"
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "software_compatibility": [
+      {
+        "name": "DaVinci Resolve",
+        "image": "/assets/DaVinci_Resolve_Studio_Logo.webp"
+      }
+    ],
+    "reviews": 4
+  }
+]
