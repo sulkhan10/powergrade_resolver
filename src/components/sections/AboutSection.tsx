@@ -2,8 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,77 +12,77 @@ export default function AboutSection() {
   const contentRef = useRef<HTMLDivElement>(null);
   const fragmentsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Pin section and scale background text
-      gsap.fromTo(textRef.current, 
-        { scale: 0.8, opacity: 0, rotate: -5 },
-        {
-          scale: 1.2,
-          opacity: 0.05,
-          rotate: 0,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-          force3D: true,
-        }
-      );
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     // Pin section and scale background text
+  //     gsap.fromTo(textRef.current, 
+  //       { scale: 0.8, opacity: 0, rotate: -5 },
+  //       {
+  //         scale: 1.2,
+  //         opacity: 0.05,
+  //         rotate: 0,
+  //         scrollTrigger: {
+  //           trigger: sectionRef.current,
+  //           start: "top bottom",
+  //           end: "bottom top",
+  //           scrub: 1,
+  //         },
+  //         force3D: true,
+  //       }
+  //     );
 
-      // Content reveal with stagger feel
-      const paragraphs = contentRef.current?.querySelectorAll("p");
-      if (paragraphs) {
-        gsap.from(paragraphs, {
-          y: 60,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-            end: "top 30%",
-            scrub: 0.5,
-          },
-          force3D: true,
-        });
-      }
+  //     // Content reveal with stagger feel
+  //     const paragraphs = contentRef.current?.querySelectorAll("p");
+  //     if (paragraphs) {
+  //       gsap.from(paragraphs, {
+  //         y: 60,
+  //         opacity: 0,
+  //         stagger: 0.2,
+  //         duration: 1,
+  //         ease: "power3.out",
+  //         scrollTrigger: {
+  //           trigger: sectionRef.current,
+  //           start: "top 70%",
+  //           end: "top 30%",
+  //           scrub: 0.5,
+  //         },
+  //         force3D: true,
+  //       });
+  //     }
 
-      // Mouse Parallax Effect - Optimized
-      const fragments = fragmentsRef.current?.querySelectorAll(".fragment");
-      const setters = Array.from(fragments || []).map(frag => ({
-        x: gsap.quickSetter(frag, "x", "px"),
-        y: gsap.quickSetter(frag, "y", "px")
-      }));
-      const textSetterX = gsap.quickSetter(textRef.current, "x", "px");
-      const textSetterY = gsap.quickSetter(textRef.current, "y", "px");
+  //     // Mouse Parallax Effect - Optimized
+  //     const fragments = fragmentsRef.current?.querySelectorAll(".fragment");
+  //     const setters = Array.from(fragments || []).map(frag => ({
+  //       x: gsap.quickSetter(frag, "x", "px"),
+  //       y: gsap.quickSetter(frag, "y", "px")
+  //     }));
+  //     const textSetterX = gsap.quickSetter(textRef.current, "x", "px");
+  //     const textSetterY = gsap.quickSetter(textRef.current, "y", "px");
 
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 2;
-        const yPos = (clientY / window.innerHeight - 0.5) * 2;
+  //     const handleMouseMove = (e: MouseEvent) => {
+  //       const { clientX, clientY } = e;
+  //       const xPos = (clientX / window.innerWidth - 0.5) * 2;
+  //       const yPos = (clientY / window.innerHeight - 0.5) * 2;
 
-        setters.forEach((set, i) => {
-          const speed = (i + 1) * 20;
-          set.x(xPos * speed);
-          set.y(yPos * speed);
-        });
+  //       setters.forEach((set, i) => {
+  //         const speed = (i + 1) * 20;
+  //         set.x(xPos * speed);
+  //         set.y(yPos * speed);
+  //       });
 
-        textSetterX(xPos * 10);
-        textSetterY(yPos * 10);
-      };
+  //       textSetterX(xPos * 10);
+  //       textSetterY(yPos * 10);
+  //     };
 
-      window.addEventListener("mousemove", handleMouseMove, { passive: true });
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, sectionRef);
+  //     window.addEventListener("mousemove", handleMouseMove, { passive: true });
+  //     return () => window.removeEventListener("mousemove", handleMouseMove);
+  //   }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   const decorativeImages = [
-    { src: "/assets/DSCF1195.jpg", size: "w-32 h-40", pos: "top-20 left-[10%]", rotate: "rotate-12", delay: 0 },
+    // { src: "/assets/DSCF1195.jpg", size: "w-32 h-40", pos: "top-20 left-[10%]", rotate: "rotate-12", delay: 0 },
     // { src: "/assets/DSCF1147.jpg", size: "w-40 h-32", pos: "bottom-40 left-[15%]", rotate: "-rotate-6", delay: 0.2 },
     // { src: "/assets/DSCF0912.jpg", size: "w-24 h-32", pos: "top-40 right-[15%]", rotate: "-rotate-12", delay: 0.4 },
     // { src: "/assets/DSCF1195.jpg", size: "w-32 h-32", pos: "bottom-20 right-[10%]", rotate: "rotate-6", delay: 0.6 },
@@ -99,7 +98,7 @@ export default function AboutSection() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-0"></div>
 
       {/* Floating Decorative Fragments */}
-      <div ref={fragmentsRef} className="absolute inset-0 pointer-events-none z-0">
+      {/* <div ref={fragmentsRef} className="absolute inset-0 pointer-events-none z-0">
         {decorativeImages.map((img, i) => (
           <div 
             key={i}
@@ -114,7 +113,7 @@ export default function AboutSection() {
             />
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div 
         ref={textRef}
