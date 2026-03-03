@@ -21,8 +21,12 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-  }, [currentIndex]);
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -35,11 +39,13 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
   }, [currentIndex]);
 
   const handleNext = () => {
+    setIsLoading(true);
     setDirection(1);
     onNavigate((currentIndex + 1) % photos.length);
   };
 
   const handlePrev = () => {
+    setIsLoading(true);
     setDirection(-1);
     onNavigate((currentIndex - 1 + photos.length) % photos.length);
   };
@@ -146,6 +152,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
                   sizes="100vw"
                   priority
                   onLoad={() => setIsLoading(false)}
+                  onError={() => setIsLoading(false)}
                 />
               </div>
             </motion.div>
