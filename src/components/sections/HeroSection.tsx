@@ -65,7 +65,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 scale-110">
         <div ref={imageRef} className="relative w-full h-full">
           <Image 
-            src="/assets/DSCF1147.jpg" 
+            src="/assets/IMG_4943.PNG" 
             alt="Wilie Effendi Photography" 
             fill 
             sizes="100vw"
