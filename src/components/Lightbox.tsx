@@ -122,7 +122,20 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.4 },
               }}
-              className="absolute inset-0 flex items-center justify-center"
+              drag
+              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, info) => {
+                const thresholdX = 100;
+                const thresholdY = 100;
+                if (Math.abs(info.offset.x) > Math.abs(info.offset.y)) {
+                  if (info.offset.x > thresholdX) handlePrev();
+                  else if (info.offset.x < -thresholdX) handleNext();
+                } else {
+                  if (info.offset.y < -thresholdY) onClose();
+                }
+              }}
+              className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
               <div className="relative w-full h-full">
                 <Image

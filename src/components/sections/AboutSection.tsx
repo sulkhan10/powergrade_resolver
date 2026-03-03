@@ -49,35 +49,31 @@ export default function AboutSection() {
         });
       }
 
-      // Mouse Parallax Effect
+      // Mouse Parallax Effect - Optimized
+      const fragments = fragmentsRef.current?.querySelectorAll(".fragment");
+      const setters = Array.from(fragments || []).map(frag => ({
+        x: gsap.quickSetter(frag, "x", "px"),
+        y: gsap.quickSetter(frag, "y", "px")
+      }));
+      const textSetterX = gsap.quickSetter(textRef.current, "x", "px");
+      const textSetterY = gsap.quickSetter(textRef.current, "y", "px");
+
       const handleMouseMove = (e: MouseEvent) => {
         const { clientX, clientY } = e;
         const xPos = (clientX / window.innerWidth - 0.5) * 2;
         const yPos = (clientY / window.innerHeight - 0.5) * 2;
 
-        const fragments = fragmentsRef.current?.querySelectorAll(".fragment");
-        if (fragments) {
-          fragments.forEach((frag, i) => {
-            const speed = (i + 1) * 20;
-            gsap.to(frag, {
-              x: xPos * speed,
-              y: yPos * speed,
-              duration: 1,
-              ease: "power2.out"
-            });
-          });
-        }
-
-        // Slight move for main text too
-        gsap.to(textRef.current, {
-          x: xPos * 10,
-          y: yPos * 10,
-          duration: 1,
-          ease: "power2.out"
+        setters.forEach((set, i) => {
+          const speed = (i + 1) * 20;
+          set.x(xPos * speed);
+          set.y(yPos * speed);
         });
+
+        textSetterX(xPos * 10);
+        textSetterY(yPos * 10);
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
       return () => window.removeEventListener("mousemove", handleMouseMove);
     }, sectionRef);
 
@@ -111,6 +107,7 @@ export default function AboutSection() {
               src={img.src}
               alt="decorative"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover"
             />
           </div>

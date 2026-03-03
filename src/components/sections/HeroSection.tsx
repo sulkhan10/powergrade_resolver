@@ -52,7 +52,7 @@ export default function HeroSection() {
 
   const splitText = (text: string) => {
     return text.split("").map((char, i) => (
-      <span key={i} className="char inline-block">
+      <span key={i} className="char inline-block will-change-transform">
         {char === " " ? "\u00A0" : char}
       </span>
     ));
@@ -67,6 +67,7 @@ export default function HeroSection() {
             src="/assets/DSCF1147.jpg" 
             alt="Wilie Effendi Photography" 
             fill 
+            sizes="100vw"
             className="object-cover opacity-60 grayscale-[0.2]"
             priority
           />
@@ -80,7 +81,7 @@ export default function HeroSection() {
       <div className="relative z-20 text-center px-4">
         <h1 
           ref={headlineRef}
-          className="text-[14vw] md:text-[12vw] font-syne font-bold leading-[0.85] tracking-tighter text-accent lowercase drop-shadow-2xl perspective-1000"
+          className="text-[10vw] md:text-[8vw] font-syne font-bold leading-[0.85] tracking-tighter text-accent lowercase drop-shadow-2xl perspective-1000"
         >
           <div className="overflow-hidden">
             {splitText("capture life")}

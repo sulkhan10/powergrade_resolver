@@ -85,7 +85,7 @@ export default function StoreDetailPage() {
                   <h3 className="text-accent font-syne font-bold text-lg lowercase">Compatibility</h3>
                   <div className="flex flex-wrap gap-6">
                     {product.software_compatibility.map((software, i) => (
-                      <div key={i} className="flex items-center gap-3 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all group">
+                      <div key={i} className="flex items-center gap-3 transition-all group">
                         <div className="relative w-8 h-8">
                           <Image src={software.image} alt={software.name} fill className="object-contain" />
                         </div>
