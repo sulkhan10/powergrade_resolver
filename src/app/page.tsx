@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import AboutSection from "@/components/sections/AboutSection";
 import BlogSection from "@/components/sections/BlogSection";
 import FooterSection from "@/components/sections/FooterSection";
 import HeroSection from "@/components/sections/HeroSection";
@@ -12,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <Navigation />
       <HeroSection />
-      {/* <AboutSection /> */}
+      <AboutSection />
       <PortfolioSection />
       <PersonalSection />
       <ProcessSection />
