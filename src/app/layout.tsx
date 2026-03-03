@@ -39,6 +39,8 @@ export default function RootLayout({
       >
         <PageLoader />
         <SmoothScroll>
+          {/* Global Noise Overlay */}
+          <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-[9999]"></div>
           {children}
         </SmoothScroll>
       </body>

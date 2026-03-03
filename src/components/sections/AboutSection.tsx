@@ -27,7 +27,8 @@ export default function AboutSection() {
             start: "top bottom",
             end: "bottom top",
             scrub: 1,
-          }
+          },
+          force3D: true,
         }
       );
 
@@ -45,7 +46,8 @@ export default function AboutSection() {
             start: "top 70%",
             end: "top 30%",
             scrub: 0.5,
-          }
+          },
+          force3D: true,
         });
       }
 
@@ -82,9 +84,9 @@ export default function AboutSection() {
 
   const decorativeImages = [
     { src: "/assets/DSCF1195.jpg", size: "w-32 h-40", pos: "top-20 left-[10%]", rotate: "rotate-12", delay: 0 },
-    { src: "/assets/DSCF1147.jpg", size: "w-40 h-32", pos: "bottom-40 left-[15%]", rotate: "-rotate-6", delay: 0.2 },
-    { src: "/assets/DSCF0912.jpg", size: "w-24 h-32", pos: "top-40 right-[15%]", rotate: "-rotate-12", delay: 0.4 },
-    { src: "/assets/DSCF1195.jpg", size: "w-32 h-32", pos: "bottom-20 right-[10%]", rotate: "rotate-6", delay: 0.6 },
+    // { src: "/assets/DSCF1147.jpg", size: "w-40 h-32", pos: "bottom-40 left-[15%]", rotate: "-rotate-6", delay: 0.2 },
+    // { src: "/assets/DSCF0912.jpg", size: "w-24 h-32", pos: "top-40 right-[15%]", rotate: "-rotate-12", delay: 0.4 },
+    // { src: "/assets/DSCF1195.jpg", size: "w-32 h-32", pos: "bottom-20 right-[10%]", rotate: "rotate-6", delay: 0.6 },
   ];
 
   return (
@@ -101,7 +103,7 @@ export default function AboutSection() {
         {decorativeImages.map((img, i) => (
           <div 
             key={i}
-            className={`fragment absolute ${img.size} ${img.pos} ${img.rotate} opacity-10 blur-[2px] grayscale border border-white/10 overflow-hidden transition-all duration-700`}
+            className={`fragment absolute ${img.size} ${img.pos} ${img.rotate} opacity-10 grayscale border border-white/10 overflow-hidden transition-all duration-700`}
           >
             <Image 
               src={img.src}
@@ -125,7 +127,7 @@ export default function AboutSection() {
 
       <div ref={contentRef} className="relative z-10 max-w-4xl text-center">
         <div className="space-y-8">
-          <p className="text-4xl md:text-6xl font-syne font-bold text-white uppercase tracking-tighter leading-tight drop-shadow-2xl">
+          <p className="text-4xl md:text-6xl font-syne font-bold text-white uppercase tracking-tighter leading-tight">
             Capturing life's most beautiful moments <br />
             through visual storytelling.
           </p>

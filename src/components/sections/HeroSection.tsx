@@ -23,6 +23,7 @@ export default function HeroSection() {
           duration: 1.2,
           ease: "power4.out",
           delay: 0.5,
+          force3D: true,
         });
       }
 
@@ -75,13 +76,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
       </div>
 
-      {/* Background Noise/Grain Overlay */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-10"></div>
-      
-      <div className="relative z-20 text-center px-4">
+ 
+       <div className="relative z-20 text-center px-4">
         <h1 
           ref={headlineRef}
-          className="text-[10vw] md:text-[8vw] font-syne font-bold leading-[0.85] tracking-tighter text-accent lowercase drop-shadow-2xl perspective-1000"
+          className="text-[10vw] md:text-[8vw] font-syne font-bold leading-[0.85] tracking-tighter text-accent lowercase perspective-1000"
         >
           <div className="overflow-hidden">
             {splitText("capture life")}
@@ -92,7 +91,7 @@ export default function HeroSection() {
         </h1>
         
         <div ref={subtextRef}>
-          <p className="mt-8 text-accent font-mono text-sm md:text-base lowercase tracking-tight max-w-md mx-auto drop-shadow-lg">
+          <p className="mt-8 text-accent font-mono text-sm md:text-base lowercase tracking-tight max-w-md mx-auto">
             photographer and content creator. capturing life's most beautiful moments.
           </p>
         </div>
@@ -107,12 +106,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Decorative large text background */}
-      <div className="absolute -bottom-[5%] left-0 w-full whitespace-nowrap opacity-5 select-none pointer-events-none">
-        <span className="text-[25vw] font-syne font-black text-accent uppercase tracking-tighter">
-          WILIE WILIE WILIE
-        </span>
-      </div>
+     
     </section>
   );
 }
