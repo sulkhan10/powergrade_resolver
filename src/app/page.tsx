@@ -13,11 +13,11 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
+      <StoreSection />
       <AboutSection />
       <PortfolioSection />
       <PersonalSection />
       <ProcessSection />
-      <StoreSection />
       <BlogSection />
       <FooterSection />
     </main>
