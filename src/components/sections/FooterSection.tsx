@@ -8,7 +8,7 @@ export default function FooterSection() {
   ];
 
   return (
-    <footer id="contact" className="relative flex flex-col items-center justify-between bg-black py-24 px-6 md:px-12 overflow-hidden border-t border-accent/10">
+    <footer id="contact" className="relative flex flex-col items-center justify-between bg-background py-24 px-6 md:px-12 overflow-hidden border-t border-accent/10">
       <div className="w-full max-w-7xl flex flex-col md:flex-row justify-between items-start gap-12 z-10">
         <div className="flex flex-col gap-8">
           <h2 className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em]">get in touch</h2>
@@ -22,7 +22,7 @@ export default function FooterSection() {
                 className="group flex flex-col"
               >
                 <span className="text-accent/40 font-mono text-[9px] lowercase tracking-tight">{link.label}</span>
-                <span className="text-3xl md:text-5xl font-syne font-bold text-accent lowercase tracking-tighter group-hover:text-white transition-colors">
+                <span className="text-3xl md:text-5xl font-syne font-bold text-accent lowercase tracking-tighter group-hover:text-foreground transition-colors">
                   {link.label === "email" ? link.value : `@wilieeffendi`}
                 </span>
               </a>

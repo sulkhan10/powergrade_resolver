@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function PersonalSection() {
   return (
-    <section id="personal" className="relative py-32 px-6 md:px-12 max-w-7xl mx-auto bg-black overflow-hidden">
+    <section id="personal" className="relative py-32 px-6 md:px-12 max-w-7xl mx-auto bg-background overflow-hidden">
       <div className="absolute top-0 right-0 pointer-events-none opacity-[0.02] -translate-y-20">
         <h2 className="text-[20vw] font-syne font-black uppercase tracking-tighter rotate-90 origin-right">ABOUT</h2>
       </div>
@@ -16,7 +16,7 @@ export default function PersonalSection() {
           <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">personal / bio</span>
           <h2 className="text-5xl md:text-[6vw] font-syne font-bold text-accent lowercase tracking-tighter leading-[0.9] mb-12">
             hey it's me,<br />
-            <span className="text-white">wilie effendi</span>
+            <span className="text-foreground">wilie effendi</span>
           </h2>
           
           <div className="space-y-8 max-w-xl">

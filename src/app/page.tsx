@@ -10,7 +10,7 @@ import StoreSection from "@/components/sections/StoreSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
       <AboutSection />

@@ -58,11 +58,11 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 md:p-12"
+        className="fixed inset-0 z-[200] bg-background/95 flex items-center justify-center p-4 md:p-12"
       >
         <button
           onClick={onClose}
-          className="absolute top-8 right-8 text-white/40 hover:text-white font-mono text-sm lowercase z-[210] transition-colors"
+          className="absolute top-8 right-8 text-foreground/40 hover:text-foreground font-mono text-sm lowercase z-[210] transition-colors"
         >
           close / esc
         </button>
@@ -70,7 +70,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
         <div className="absolute left-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
             onClick={handlePrev}
-            className="text-white/20 hover:text-white transition-colors p-4"
+            className="text-foreground/20 hover:text-foreground transition-colors p-4"
           >
             ← prev
           </button>
@@ -79,7 +79,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
         <div className="absolute right-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
             onClick={handleNext}
-            className="text-white/20 hover:text-white transition-colors p-4"
+            className="text-foreground/20 hover:text-foreground transition-colors p-4"
           >
             next →
           </button>
@@ -95,7 +95,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 flex items-center justify-center z-[205]"
               >
-                <div className="w-12 h-12 border-2 border-white/10 border-t-white/40 rounded-full animate-spin"></div>
+                <div className="w-12 h-12 border-2 border-foreground/10 border-t-white/40 rounded-full animate-spin"></div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -162,7 +162,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
             <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-2">
               {currentIndex + 1} / {photos.length}
             </span>
-            <h3 className="text-white font-syne font-bold lowercase text-xl tracking-tighter">
+            <h3 className="text-foreground font-syne font-bold lowercase text-xl tracking-tighter">
               {currentPhoto.alt}
             </h3>
           </div>

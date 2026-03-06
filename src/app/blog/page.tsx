@@ -14,7 +14,7 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-5xl mx-auto">
@@ -40,7 +40,7 @@ export default function BlogPage() {
                 className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12"
               >
                 <span className="text-accent/40 font-mono text-[10px] uppercase tracking-widest">{post.date}</span>
-                <h2 className="text-3xl md:text-4xl font-syne font-bold text-accent group-hover:text-white transition-colors lowercase">
+                <h2 className="text-3xl md:text-4xl font-syne font-bold text-accent group-hover:text-foreground transition-colors lowercase">
                   {post.title}
                 </h2>
               </motion.div>

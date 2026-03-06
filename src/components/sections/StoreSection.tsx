@@ -58,7 +58,7 @@ export default function StoreSection() {
   }, []);
 
   return (
-    <section id="store" className="py-32 px-6 md:px-12 max-w-7xl mx-auto bg-black">
+    <section id="store" className="py-32 px-6 md:px-12 max-w-7xl mx-auto bg-background">
       <header className="mb-24">
         <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">store / digital assets</span>
         <h2 className="text-5xl md:text-[6vw] font-syne font-bold text-accent lowercase tracking-tighter leading-none">
@@ -71,7 +71,7 @@ export default function StoreSection() {
           <Link
             key={product.title}
             href={`/store/${product.slug}`}
-            className="store-product group flex flex-col gap-4 border border-accent/10 p-4 bg-white/[0.02] hover:border-accent/40 transition-colors"
+            className="store-product group flex flex-col gap-4 border border-accent/10 p-4 bg-foreground/[0.02] hover:border-accent/40 transition-colors"
           >
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image 
@@ -83,7 +83,7 @@ export default function StoreSection() {
             </div>
             <div className="flex justify-between items-start mt-4">
               <div>
-                <h3 className="text-lg font-syne font-bold text-accent lowercase tracking-tight group-hover:text-white transition-colors">
+                <h3 className="text-lg font-syne font-bold text-accent lowercase tracking-tight group-hover:text-foreground transition-colors">
                   {product.title}
                 </h3>
                 <p className="text-accent/40 font-mono text-[10px] lowercase tracking-widest mt-1">{product.category}</p>

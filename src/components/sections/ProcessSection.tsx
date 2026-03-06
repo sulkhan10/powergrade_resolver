@@ -46,7 +46,7 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <section id="process" ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-24">
+    <section id="process" ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden py-24">
       {/* Grid Background */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
         style={{ 

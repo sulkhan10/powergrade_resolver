@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function PersonalPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="relative pt-40 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
@@ -53,7 +53,7 @@ export default function PersonalPage() {
                 className="text-5xl md:text-[6vw] font-syne font-bold text-accent lowercase tracking-tighter leading-[0.9] mb-8"
               >
                 hey it's me,<br />
-                <span className="text-white">wilie effendi</span>
+                <span className="text-foreground">wilie effendi</span>
               </motion.h1>
             </header>
 

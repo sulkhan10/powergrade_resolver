@@ -69,11 +69,11 @@ export default function HeroSection() {
             alt="Wilie Effendi Photography" 
             fill 
             sizes="100vw"
-            className="object-cover opacity-60 grayscale-[0.2]"
+            className="object-cover opacity-90 dark:opacity-60 grayscale-[0.2]"
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 dark:from-background/80 via-transparent to-background/60 dark:to-background/80"></div>
       </div>
 
  
@@ -85,7 +85,7 @@ export default function HeroSection() {
           <div className="overflow-hidden">
             {splitText("capture life")}
           </div>
-          <div className="overflow-hidden text-white">
+          <div className="overflow-hidden text-foreground">
             {splitText("storytell more")}
           </div>
         </h1>

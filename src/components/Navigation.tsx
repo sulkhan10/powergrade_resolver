@@ -1,6 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,6 +10,12 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -47,7 +55,7 @@ export default function Navigation() {
     <>
       <nav 
         className={`fixed top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-6 md:px-10 transition-all duration-500 ease-in-out ${
-          scrolled ? "bg-black/60 backdrop-blur-xl py-4 shadow-lg border-b border-accent/5" : "bg-transparent"
+          scrolled ? "bg-background/60 backdrop-blur-xl py-4 shadow-lg border-b border-accent/5" : "bg-transparent"
         }`}
       >
         <Link href="/" className="text-accent font-mono text-sm lowercase tracking-tight cursor-pointer hover:opacity-70 transition-opacity">
@@ -61,12 +69,23 @@ export default function Navigation() {
           </div>
         </div>
 
-        <button
-          onClick={() => setIsOpen(true)}
-          className="text-accent font-mono text-sm lowercase tracking-tight hover:opacity-70 transition-opacity"
-        >
-          menu
-        </button>
+        <div className="flex items-center gap-6">
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="text-accent hover:opacity-70 transition-opacity flex items-center justify-center"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
+            </button>
+          )}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-accent font-mono text-sm lowercase tracking-tight hover:opacity-70 transition-opacity"
+          >
+            menu
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -78,7 +97,7 @@ export default function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-[90] bg-background/40 backdrop-blur-sm"
             />
             
             <motion.div
@@ -86,7 +105,7 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-0 right-0 h-full z-[100] bg-black border-l border-accent/10 flex flex-col px-8 md:px-16 py-12 w-full md:w-[500px] shadow-2xl"
+              className="fixed top-0 right-0 h-full z-[100] bg-background border-l border-accent/10 flex flex-col px-8 md:px-16 py-12 w-full md:w-[500px] shadow-2xl"
             >
               <div className="flex justify-between items-center w-full mb-20">
                 <span className="text-accent/40 font-mono text-[10px] uppercase tracking-[0.2em]">navigation</span>
@@ -110,7 +129,7 @@ export default function Navigation() {
                     className="group flex items-baseline gap-6"
                   >
                     <span className="text-accent/20 font-mono text-sm md:text-base">{item.secondary}</span>
-                    <span className="text-5xl md:text-7xl font-syne font-bold text-accent lowercase tracking-tighter hover:text-white transition-all duration-300 group-hover:translate-x-2">
+                    <span className="text-5xl md:text-7xl font-syne font-bold text-accent lowercase tracking-tighter hover:text-foreground transition-all duration-300 group-hover:translate-x-2">
                       {item.label}
                     </span>
                   </motion.a>

@@ -26,6 +26,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,12 +39,14 @@ export default function RootLayout({
         className={`${syne.variable} ${jetbrainsMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <PageLoader />
-        <SmoothScroll>
-          {/* Global Noise Overlay */}
-          <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-[9999]"></div>
-          {children}
-        </SmoothScroll>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <PageLoader />
+          <SmoothScroll>
+            {/* Global Noise Overlay */}
+            <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-[9999]"></div>
+            {children}
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

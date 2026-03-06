@@ -38,7 +38,7 @@ export default function BlogSection() {
   }, []);
 
   return (
-    <section id="blog" className="py-32 px-6 md:px-12 max-w-5xl mx-auto bg-black">
+    <section id="blog" className="py-32 px-6 md:px-12 max-w-5xl mx-auto bg-background">
       <header className="mb-24">
         <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">blog / thoughts</span>
         <h2 className="text-5xl md:text-[6vw] font-syne font-bold text-accent lowercase tracking-tighter leading-none">
@@ -55,7 +55,7 @@ export default function BlogSection() {
           >
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
               <span className="text-accent/40 font-mono text-[10px] uppercase tracking-widest">{post.date}</span>
-              <h3 className="text-3xl font-syne font-bold text-accent group-hover:text-white transition-colors lowercase">
+              <h3 className="text-3xl font-syne font-bold text-accent group-hover:text-foreground transition-colors lowercase">
                 {post.title}
               </h3>
             </div>

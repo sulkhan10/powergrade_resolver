@@ -53,10 +53,10 @@ export default function BlogDetailPage() {
   const slug = params.slug as string;
   const post = blogPosts[slug as keyof typeof blogPosts];
 
-  if (!post) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Post not found</div>;
+  if (!post) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Post not found</div>;
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <article className="pt-40 pb-20 px-6 md:px-12 max-w-4xl mx-auto">

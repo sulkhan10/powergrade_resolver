@@ -93,7 +93,7 @@ export default function AboutSection() {
     <section 
       id="about" 
       // ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-black px-6 md:px-12 overflow-hidden py-24"
+      className="relative min-h-screen flex items-center justify-center bg-background px-6 md:px-12 overflow-hidden py-24"
     >
       {/* Background Noise Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 z-0"></div>
@@ -103,7 +103,7 @@ export default function AboutSection() {
         {decorativeImages.map((img, i) => (
           <div 
             key={i}
-            className={`fragment absolute ${img.size} ${img.pos} ${img.rotate} opacity-10 grayscale border border-white/10 overflow-hidden transition-all duration-700`}
+            className={`fragment absolute ${img.size} ${img.pos} ${img.rotate} opacity-10 grayscale border border-foreground/10 overflow-hidden transition-all duration-700`}
           >
             <Image 
               src={img.src}
@@ -120,7 +120,7 @@ export default function AboutSection() {
         ref={textRef}
         className="absolute inset-0 flex items-center justify-center opacity-0 select-none pointer-events-none z-0"
       >
-        <h2 className="text-[35vw] font-syne font-black text-white uppercase leading-none opacity-[0.05]">
+        <h2 className="text-[35vw] font-syne font-black text-foreground uppercase leading-none opacity-[0.05]">
           WILIE
         </h2>
       </div> */}
@@ -129,19 +129,19 @@ export default function AboutSection() {
       // ref={contentRef} 
       className="relative z-10 max-w-4xl text-center">
         <div className="space-y-8">
-          <p className="text-4xl md:text-6xl font-syne font-bold text-white uppercase tracking-tighter leading-tight">
+          <p className="text-4xl md:text-6xl font-syne font-bold text-foreground uppercase tracking-tighter leading-tight">
             Capturing life's most beautiful moments <br />
             through visual storytelling.
           </p>
           
-          <p className="text-white/60 font-mono text-sm md:text-xl lowercase tracking-tight leading-relaxed max-w-2xl mx-auto">
+          <p className="text-foreground/60 font-mono text-sm md:text-xl lowercase tracking-tight leading-relaxed max-w-2xl mx-auto">
             Committed to creating images and videos that resonate with emotion and artistry. Focused on the intersection of light, shadow, and human connection.
           </p>
         </div>
       </div>
 
       <div className="absolute bottom-12 right-12 text-right z-10">
-        <span className="text-white/30 font-mono text-[9px] lowercase tracking-[0.2em] uppercase">about // visual artist</span>
+        <span className="text-foreground/30 font-mono text-[9px] lowercase tracking-[0.2em] uppercase">about // visual artist</span>
       </div>
     </section>
   );

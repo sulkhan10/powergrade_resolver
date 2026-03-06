@@ -30,7 +30,7 @@ export default function PortfolioPage() {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-[1600px] mx-auto">
@@ -72,14 +72,14 @@ export default function PortfolioPage() {
                   <span className="text-accent/40 font-mono text-[9px] lowercase tracking-widest block mb-1">
                     {photo.category} / 0{index + 1}
                   </span>
-                  <h3 className="text-white font-syne font-bold lowercase text-lg leading-tight">
+                  <h3 className="text-foreground font-syne font-bold lowercase text-lg leading-tight">
                     {photo.alt}
                   </h3>
                 </div>
 
                 {/* View Indicator */}
                 <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40 font-mono text-[10px]">
+                  <div className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center text-foreground/40 font-mono text-[10px]">
                     +
                   </div>
                 </div>

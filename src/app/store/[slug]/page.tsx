@@ -17,7 +17,7 @@ export default function StoreDetailPage() {
   const product = productsData.find(p => p.slug === slug);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
-  if (!product) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Product not found</div>;
+  if (!product) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Product not found</div>;
 
   // Prepare gallery photos for Lightbox including main image
   const galleryPhotos = [
@@ -29,7 +29,7 @@ export default function StoreDetailPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
@@ -50,7 +50,7 @@ export default function StoreDetailPage() {
             />
             {/* View Indicator for Main Image */}
             <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40 font-mono text-[10px]">
+              <div className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center text-foreground/40 font-mono text-[10px]">
                 +
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function StoreDetailPage() {
               <h1 className="text-5xl md:text-6xl font-syne font-bold text-accent lowercase tracking-tighter leading-tight mb-6">
                 {product.name}
               </h1>
-              <span className="text-white font-mono text-2xl font-bold">{product.price}</span>
+              <span className="text-foreground font-mono text-2xl font-bold">{product.price}</span>
             </header>
  
             <div className="space-y-12">
@@ -100,7 +100,7 @@ export default function StoreDetailPage() {
                 href={product.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-5 bg-accent text-black font-mono text-xs uppercase tracking-widest font-bold hover:bg-white transition-colors text-center"
+                className="block w-full py-5 bg-accent text-background font-mono text-xs uppercase tracking-widest font-bold hover:bg-foreground transition-colors text-center"
               >
                 buy now
               </a>
@@ -118,7 +118,7 @@ export default function StoreDetailPage() {
         {product.three_cards && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32">
             {product.three_cards.map((card, i) => (
-              <div key={i} className="border border-accent/10 p-8 pt-12 relative group hover:border-accent/40 transition-colors bg-white/[0.01]">
+              <div key={i} className="border border-accent/10 p-8 pt-12 relative group hover:border-accent/40 transition-colors bg-foreground/[0.01]">
                 <span className="absolute top-4 left-4 text-accent/10 font-mono text-4xl">0{i+1}</span>
                 <div className="text-accent/60 font-mono text-xs lowercase leading-relaxed whitespace-pre-wrap">
                   {card}
@@ -156,7 +156,7 @@ export default function StoreDetailPage() {
                   />
                   {/* View Indicator */}
                   <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40 font-mono text-[10px]">
+                    <div className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center text-foreground/40 font-mono text-[10px]">
                       +
                     </div>
                   </div>

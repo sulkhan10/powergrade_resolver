@@ -38,19 +38,19 @@ export default function PageLoader() {
             y: "-100%",
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
           }}
-          className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center"
         >
           <div className="relative overflow-hidden">
             <motion.h2 
               initial={{ y: 100 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-              className="text-white font-syne font-bold text-2xl md:text-3xl lowercase tracking-tighter"
+              className="text-foreground font-syne font-bold text-2xl md:text-3xl lowercase tracking-tighter"
             >
               wilie effendi
             </motion.h2>
           </div>
-          <div className="mt-4 w-32 h-[1px] bg-white/10 relative overflow-hidden">
+          <div className="mt-4 w-32 h-[1px] bg-foreground/10 relative overflow-hidden">
             <motion.div 
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}

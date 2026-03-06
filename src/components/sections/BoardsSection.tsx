@@ -43,7 +43,7 @@ export default function BoardsSection() {
   }, []);
 
   return (
-    <section id="boards" ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-24">
+    <section id="boards" ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden py-24">
       <div className="w-full max-w-7xl px-6 md:px-12">
         <h2 className="text-[10vw] font-syne font-bold text-accent/10 lowercase absolute top-20 left-12 pointer-events-none">
           work
@@ -68,7 +68,7 @@ export default function BoardsSection() {
               
               <div className="relative z-20">
                 <span className="text-accent/40 font-mono text-[10px] lowercase tracking-widest block mb-2">{board.id}</span>
-                <h2 className="text-4xl font-syne font-bold text-accent lowercase tracking-tighter group-hover:text-white transition-colors">
+                <h2 className="text-4xl font-syne font-bold text-accent lowercase tracking-tighter group-hover:text-foreground transition-colors">
                   {board.title}
                 </h2>
                 <p className="text-accent/60 font-mono text-xs lowercase tracking-tight mt-2">{board.type}</p>

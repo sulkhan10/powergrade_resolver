@@ -28,7 +28,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
@@ -75,7 +75,7 @@ export default function ContactPage() {
                   href={method.href}
                   target={method.href !== "#" ? "_blank" : undefined}
                   rel={method.href !== "#" ? "noopener noreferrer" : undefined}
-                  className="text-3xl md:text-5xl font-syne font-bold text-accent lowercase tracking-tighter hover:text-white transition-colors block"
+                  className="text-3xl md:text-5xl font-syne font-bold text-accent lowercase tracking-tighter hover:text-foreground transition-colors block"
                 >
                   {method.value}
                 </a>

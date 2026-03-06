@@ -19,7 +19,7 @@ export default function StorePage() {
     : products.filter(product => product.category === activeCategory);
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
@@ -59,7 +59,7 @@ export default function StorePage() {
                 animate={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex flex-col gap-4 border border-accent/10 p-4 hover:border-accent/40 transition-colors bg-white/[0.02]"
+                className="flex flex-col gap-4 border border-accent/10 p-4 hover:border-accent/40 transition-colors bg-foreground/[0.02]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-accent/5">
                   <Image 
@@ -71,7 +71,7 @@ export default function StorePage() {
                 </div>
                 <div className="flex justify-between items-start mt-4">
                   <div>
-                    <h2 className="text-xl font-syne font-bold text-accent lowercase tracking-tight group-hover:text-white transition-colors">
+                    <h2 className="text-xl font-syne font-bold text-accent lowercase tracking-tight group-hover:text-foreground transition-colors">
                       {product.name}
                     </h2>
                     <p className="text-accent/40 font-mono text-[10px] lowercase tracking-widest mt-1">{product.category}</p>
