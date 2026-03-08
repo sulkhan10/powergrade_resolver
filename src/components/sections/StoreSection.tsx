@@ -60,7 +60,7 @@ export default function StoreSection() {
                 src={product.main_image}
                 alt={product.name}
                 fill
-                className="object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="object-cover  group-hover:scale-105 transition-all duration-700"
               />
             </div>
             <div className="flex justify-between items-start mt-4">
