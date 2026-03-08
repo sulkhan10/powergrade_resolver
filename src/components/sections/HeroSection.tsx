@@ -65,11 +65,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 scale-110">
         <div ref={imageRef} className="relative w-full h-full">
           <Image 
-            src="/assets/IMG_4943.PNG" 
+            src="/assets/CoverWeb.webp" 
             alt="Wilie Effendi Photography" 
             fill 
             sizes="100vw"
-            className="object-cover opacity-90 dark:opacity-60 grayscale-[0.2]"
+            className="object-cover opacity-80 dark:opacity-50 contrast-110"
             priority
           />
         </div>

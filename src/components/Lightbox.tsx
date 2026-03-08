@@ -58,19 +58,39 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[200] bg-background/95 flex items-center justify-center p-4 md:p-12"
+        className="fixed inset-0 z-[200] bg-black flex items-center justify-center p-4 md:p-12"
       >
         <button
+        style={{ backgroundColor: "white", color: "black" }}
           onClick={onClose}
-          className="absolute top-8 right-8 text-foreground/40 hover:text-foreground font-mono text-sm lowercase z-[210] transition-colors"
+          className="absolute top-6 right-6 md:top-8 md:right-8 text-white/40 hover:text-white font-mono text-[10px] md:text-xs lowercase z-[210] transition-colors 
+          bg-black
+          
+          "
         >
           close / esc
         </button>
 
+        <div className="absolute left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 bottom-8 md:bottom-12 z-[210] flex flex-col items-center md:items-start gap-4">
+          {/* <div 
+            style={{ backgroundColor: "white", color: "black" }}
+            className="px-5 py-3 border border-black/10 shadow-2xl flex flex-col gap-1.5 min-w-[200px]"
+          >
+            <span className="text-black/40 font-mono text-[9px] lowercase tracking-[0.3em] block">
+              {currentIndex + 1} / {photos.length}
+            </span>
+            <h3 className="text-black font-syne font-bold lowercase text-sm md:text-base tracking-tighter">
+              {currentPhoto.alt}
+            </h3>
+          </div> */}
+        </div>
+
         <div className="absolute left-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
+                  style={{ backgroundColor: "white", color: "black" }}
+
             onClick={handlePrev}
-            className="text-foreground/20 hover:text-foreground transition-colors p-4"
+            className="text-white/20 hover:text-white transition-colors  text-sm font-mono"
           >
             ← prev
           </button>
@@ -78,8 +98,10 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
 
         <div className="absolute right-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
+                  style={{ backgroundColor: "white", color: "black" }}
+
             onClick={handleNext}
-            className="text-foreground/20 hover:text-foreground transition-colors p-4"
+            className="text-white/20 hover:text-white transition-colors text-sm font-mono"
           >
             next →
           </button>
@@ -95,7 +117,7 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 flex items-center justify-center z-[205]"
               >
-                <div className="w-12 h-12 border-2 border-foreground/10 border-t-white/40 rounded-full animate-spin"></div>
+                <div className="w-12 h-12 border-2 border-white/10 border-t-white rounded-full animate-spin"></div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -158,14 +180,6 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute bottom-0 left-0 right-0 py-8 text-center bg-gradient-to-t from-black/60 to-transparent">
-            <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-2">
-              {currentIndex + 1} / {photos.length}
-            </span>
-            <h3 className="text-foreground font-syne font-bold lowercase text-xl tracking-tighter">
-              {currentPhoto.alt}
-            </h3>
-          </div>
         </div>
       </motion.div>
     </AnimatePresence>

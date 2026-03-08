@@ -43,12 +43,17 @@ export default function Navigation() {
   }, []);
 
   const menuItems = [
-    { label: "home", href: "/", secondary: "01/06" },
-    { label: "portfolio", href: "/portfolio", secondary: "02/06" },
-    { label: "personal", href: "/personal", secondary: "03/06" },
-    { label: "store", href: "/store", secondary: "04/06" },
-    { label: "blog", href: "/blog", secondary: "05/06" },
-    { label: "contact", href: "/contact", secondary: "06/06" },
+    { label: "home", href: "/", secondary: "01/05" },
+    { label: "personal", href: "/personal", secondary: "02/05" },
+    { label: "store", href: "/store", secondary: "03/05" },
+    { label: "blog", href: "/blog", secondary: "04/05" },
+    { label: "contact", href: "/contact", secondary: "05/05" },
+    // { label: "home", href: "/", secondary: "01/06" },
+    // { label: "portfolio", href: "/portfolio", secondary: "02/06" },
+    // { label: "personal", href: "/personal", secondary: "03/06" },
+    // { label: "store", href: "/store", secondary: "04/06" },
+    // { label: "blog", href: "/blog", secondary: "05/06" },
+    // { label: "contact", href: "/contact", secondary: "06/06" },
   ];
 
   return (

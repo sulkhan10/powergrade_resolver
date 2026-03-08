@@ -1,0 +1,48 @@
+[
+  {
+    "id": 4,
+    "type": "lightroom-preset",
+    "main_image": "/assets/Crystalys/Sample/file4.webp",
+    "link": "https://lynk.id/wilieeffendi/kNzjWr5",
+    "slug": "analog-film-lightroom-presets",
+    "name": "Analog Film Lightroom Presets",
+    "price": "IDR 25K",
+    "category": "Presets",
+    "categorySlug": "presets",
+    "short_description": "",
+    "description": "Analog Film Lightroom Presets by Wilie Effendi is a premium Lightroom preset system crafted to enhance your images effortlessly, regardless of the genre—be it street, travel, portrait, and more.\n\nWhat’s Inside: 4 Color Presets\n\n▶ Key Features:  \n➭ Instant Enhancement – Transform your photos with just one or two clicks.\n➭ Versatile Adjustments – Fine-tune dynamic range, color, texture, clarity, sharpening, and grain with quick actions.\n➭ Universal Compatibility – Designed to work seamlessly with Sony, Fuji, Ricoh, Nikon, and other cameras.\n\nThis preset system is built for maximum flexibility, allowing you to apply stunning edits to any type of photograph.\nThe included quick actions ensure that every preset adapts beautifully to your images.\n\n▶ Compatible with: Lightroom Classic and Lightroom (Desktop/Mobile).\n▶ Optimized for RAW images from all major camera brands.\n",
+    "rating": 4.0,
+    "three_cards" : [
+      "FEATURES\n\n\nLightroom preset system designed to elevate your images effortlessly, no matter the genre—street, travel, portrait, and beyond.\n\n\nWhat’s Inside: 4 Color Presets\n\n\n▶ Instant Enhancement with One-Click Presets\n\n▶ Adaptive Adjustments for Dynamic Range, Color, and Texture\n\n▶ Designed for Any Photography Style\n\n▶ Works Seamlessly Across Multiple Devices\n\n▶ Fully Customizable to Suit Your Vision",
+      "PERFECT FOR\n\n\nPhotographers and creatives seeking a quick and effective way to achieve professional-quality edits without the hassle of complex adjustments.\n\n\n▶ Narrative Projects\n\n▶ Branded Content\n\n▶ Music Videos\n\n▶ Social Media\n\n▶ Events\n\n▶ and more...",
+      "COMPATIBILITY\n\n\nThese presets are specifically crafted for Lightroom, providing a versatile toolkit for photographers looking to enhance their images with ease. Each preset is optimized for RAW files and tested on various camera brands for consistent results.\n\n\n▶ Lightroom Desktop\n\n▶ Lightroom Mobile"
+    ],
+    "gallery": [
+      "/assets/Crystalys/Sample/file1.webp",
+      "/assets/Crystalys/Sample/file2.webp",
+      "/assets/Crystalys/Sample/file3.webp",
+      "/assets/Crystalys/Sample/file4.webp",
+      "/assets/Crystalys/Sample/file5.webp",
+      "/assets/Crystalys/Sample/file6.webp",
+      "/assets/Crystalys/Sample/file7.webp"
+    ],
+    "beforeAfter": [
+      { "before": "/assets/Crystalys/Sample/file1.webp",
+    "after": "/assets/Crystalys/Sample/file2.webp"}
+    ],
+    "beforeAfterOneImage": [
+      "/assets/Crystalys/Sample/file3.webp"
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "software_compatibility": [
+      {
+        "name": "Adobe Lightroom",
+        "image": "/assets/Light_Room_Logo.png"
+      }
+    ],
+    "reviews": 4
+  }
+]

@@ -9,32 +9,14 @@ import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const previewProducts = [
-  {
-    title: "Analog Film Lightroom Presets",
-    price: "IDR 25K",
-    category: "Presets",
-    img: "/assets/ThumbnailLightroomPresetProduct.PNG",
-    slug: "analog-film-lightroom-presets"
-  },
-  {
-    title: "Street Film Emulation LUTs",
-    price: "IDR 50K",
-    category: "LUTs",
-    img: "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg",
-    slug: "street-film-emulation-luts"
-  },
-  {
-    title: "Street Film Emulation PowerGrades",
-    price: "IDR 150K",
-    category: "PowerGrades",
-    img: "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
-    slug: "street-film-emulation-powergrades"
-  }
-];
+import productsData from "@/data/products.json";
 
 export default function StoreSection() {
   const gridRef = useRef<HTMLDivElement>(null);
+
+  const previewProducts = [...productsData]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,16 +49,16 @@ export default function StoreSection() {
       </header>
 
       <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {previewProducts.map((product, index) => (
+        {previewProducts.map((product) => (
           <Link
-            key={product.title}
+            key={product.id}
             href={`/store/${product.slug}`}
             className="store-product group flex flex-col gap-4 border border-accent/10 p-4 bg-foreground/[0.02] hover:border-accent/40 transition-colors"
           >
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image 
-                src={product.img}
-                alt={product.title}
+                src={product.main_image}
+                alt={product.name}
                 fill
                 className="object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
@@ -84,7 +66,7 @@ export default function StoreSection() {
             <div className="flex justify-between items-start mt-4">
               <div>
                 <h3 className="text-lg font-syne font-bold text-accent lowercase tracking-tight group-hover:text-foreground transition-colors">
-                  {product.title}
+                  {product.name}
                 </h3>
                 <p className="text-accent/40 font-mono text-[10px] lowercase tracking-widest mt-1">{product.category}</p>
               </div>
