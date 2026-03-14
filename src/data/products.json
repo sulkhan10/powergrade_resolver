@@ -80,6 +80,45 @@
       }
     ],
     "reviews": 4
+  },
+  {
+    "id": 6,
+    "type": "lightroom-preset",
+    "main_image": "/assets/Desolator/Sample/file1.webp",
+    "link": "http://lynk.id/wilieeffendi/nm47k6ykgj3k/checkout",
+    "slug": "desolator-lightroom-presets",
+    "name": "Desolator Lightroom Presets",
+    "price": "IDR 15K",
+    "category": "Presets",
+    "categorySlug": "presets",
+    "short_description": "",
+    "description": "Desolator (Lightroom) adalah kumpulan preset Lightroom yang terinspirasi dari gaya pengolahan foto nuansa analog yang saat ini saya gunakan.\n\nPreset ini lebih di rekomendasikan untuk foto di malam dan siang hari dengan nuansa kontras, paket preset ini terdiri dari 3 preset warna dan 1 hitam putih.\n\nDisarankan untuk menggunakan preset ini pada file RAW agar hasilnya lebih optimal. Gunakan preset ini sebagai dasar awal sebelum melakukan penyesuaian edit lebih lanjut sesuai kebutuhan foto Anda.\n\nInformasi penting :.\n\nPaket preset ini berisi file .xmp yang dapat digunakan di Lightroom Classic dan Lightroom CC (desktop), serta file .dng untuk Lightroom Mobile.\nSilakan unduh file secepatnya dan simpan dengan baik, karena link download memiliki batas waktu dan akan kedaluwarsa.\n\nPerlu diketahui bahwa pembelian ini tidak dapat dikembalikan (non-refundable).\n\nJika Anda mengalami kendala saat proses instalasi atau memiliki pertanyaan, silakan hubungi saya melalui email di willyeffendi99@gmail.com atau kirim pesan langsung ke Instagram @wilieeffendi dengan menyertakan nomor pesanan (#order) Anda. Saya biasanya akan membalas secepatnya.",
+    "rating": 4.0,
+   
+    "gallery": [
+      "/assets/Desolator/Sample/file1.webp",
+      "/assets/Desolator/Sample/file2.webp",
+      "/assets/Desolator/Sample/file3.webp",
+      "/assets/Desolator/Sample/file4.webp"
+    ],
+   
+    "beforeAfterOneImage": [
+      "/assets/Desolator/BeforeAfter/file1.webp",
+      "/assets/Desolator/BeforeAfter/file2.webp",
+      "/assets/Desolator/BeforeAfter/file3.webp",
+      "/assets/Desolator/BeforeAfter/file4.webp"
+    ],
+    "image": [
+      "/assets/Photo_Product_Street_Film_Emulation_PowerGrades.jpg",
+      "/assets/Photo_Product_Street_Film_Emulation_LUTs.jpg"
+    ],
+    "software_compatibility": [
+      {
+        "name": "Adobe Lightroom",
+        "image": "/assets/Light_Room_Logo.png"
+      }
+    ],
+    "reviews": 4
   }
 
 ]
