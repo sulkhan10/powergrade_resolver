@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { login } from "@/lib/api-client";
-import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +17,7 @@ export default function LoginPage() {
     const result = await login(username, password);
 
     if (result.success) {
-      router.push("/admin");
+      window.location.href = "/admin";
     } else {
       setError(result.error || "Login failed");
     }

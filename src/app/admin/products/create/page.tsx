@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createProduct } from "@/lib/api-client";
+import ImageUpload from "@/components/ImageUpload";
 
 export default function CreateProductPage() {
   const router = useRouter();
@@ -196,15 +197,10 @@ export default function CreateProductPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-accent mb-2">
-              Main Image URL
-            </label>
-            <input
-              type="url"
-              name="main_image"
+            <ImageUpload
               value={formData.main_image}
-              onChange={handleChange}
-              className="w-full px-4 py-2 rounded border border-accent/20 bg-background text-accent focus:outline-none focus:border-accent/50"
+              onChange={(url) => setFormData((prev) => ({ ...prev, main_image: url }))}
+              label="Main Image"
             />
           </div>
 

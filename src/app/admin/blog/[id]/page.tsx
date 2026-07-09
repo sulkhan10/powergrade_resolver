@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getBlogPost, updateBlogPost } from "@/lib/api-client";
+import ImageUpload from "@/components/ImageUpload";
 
 export default function EditBlogPage({
   params,
@@ -125,15 +126,10 @@ export default function EditBlogPage({
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-accent mb-2">
-                Featured Image URL
-              </label>
-              <input
-                type="url"
-                name="featured_image"
+              <ImageUpload
                 value={formData.featured_image}
-                onChange={handleChange}
-                className="w-full px-4 py-2 rounded border border-accent/20 bg-background text-accent focus:outline-none focus:border-accent/50"
+                onChange={(url) => setFormData((prev) => ({ ...prev, featured_image: url }))}
+                label="Featured Image"
               />
             </div>
           </div>

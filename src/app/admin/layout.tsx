@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { logout, verifySession } from "@/lib/api-client";
 
 export default function AdminLayout({
@@ -11,27 +11,34 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const isLoginPage = pathname === "/admin/login";
 
   useEffect(() => {
     const checkAuth = async () => {
       const result = await verifySession();
       if (result.success) {
         setUser(result.data);
-      } else {
+      } else if (!isLoginPage) {
         router.push("/admin/login");
       }
       setLoading(false);
     };
 
     checkAuth();
-  }, [router]);
+  }, [router, isLoginPage]);
 
   const handleLogout = async () => {
     await logout();
     router.push("/admin/login");
   };
+
+  // Login page: render without admin shell
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
 
   if (loading) {
     return (
@@ -42,9 +49,9 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-dvh bg-background" data-lenis-prevent>
       {/* Sidebar */}
-      <aside className="w-64 border-r border-accent/10 bg-background/50 p-6">
+      <aside className="w-64 border-r border-accent/10 bg-background/50 p-6 overflow-y-auto shrink-0">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-accent">Admin</h1>
           <p className="text-accent/60 text-sm">Content Management</p>
@@ -97,8 +104,8 @@ export default function AdminLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
-        <div className="p-8">{children}</div>
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-8 min-h-0">{children}</div>
       </main>
     </div>
   );
