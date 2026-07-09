@@ -7,20 +7,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import productsData from "@/data/products.json";
-
-interface Software {
-  name: string;
-  image: string;
-}
-
-interface BeforeAfter {
-  before: string;
-  after: string;
-}
 
 interface Product {
   id: number;
@@ -30,34 +19,58 @@ interface Product {
   category: string;
   description: string;
   main_image: string;
-  gallery?: string[];
-  beforeAfter?: BeforeAfter[];
-  beforeAfterOneImage?: string[];
-  software_compatibility?: Software[];
-  three_cards?: string[];
   link: string;
+  rating?: number;
+  software_compatibility?: { name: string; image: string }[];
+  three_cards?: string[];
 }
 
 export default function StoreDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const product = (productsData as Product[]).find(p => p.slug === slug);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [gallery, setGallery] = useState<string[]>([]);
+  const [beforeAfter, setBeforeAfter] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
+  useEffect(() => {
+    if (!slug) return;
+    fetch(`/api/products?limit=100`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          const found = data.data.find((p: any) => p.slug === slug);
+          if (found) {
+            setProduct(found);
+            // Fetch detail with images
+            return fetch(`/api/products/${found.id}`);
+          }
+        }
+        return null;
+      })
+      .then((detailRes) => detailRes?.json())
+      .then((detail) => {
+        if (detail?.success && detail.data) {
+          setGallery(detail.data.gallery || []);
+          setBeforeAfter(detail.data.before_after || []);
+        }
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Loading...</div>;
   if (!product) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Product not found</div>;
 
-  // Prepare all photos for Lightbox including comparisons and single results
+  // Prepare all photos for Lightbox
   const galleryPhotos = [
     { src: product.main_image, alt: product.name },
-    ...(product.beforeAfterOneImage ? product.beforeAfterOneImage.map((img, i) => ({
+    ...(beforeAfter ? beforeAfter.map((img, i) => ({
       src: img,
       alt: `${product.name} result ${i + 1}`
     })) : []),
-    ...(product.beforeAfter ? product.beforeAfter.map((ba, i) => ({
-        src: ba.after,
-        alt: `${product.name} comparison ${i + 1}`
-    })) : []),
-    ...(product.gallery ? product.gallery.map((img, i) => ({
+    ...(gallery ? gallery.map((img, i) => ({
       src: img,
       alt: `${product.name} sample ${i + 1}`
     })) : [])
@@ -65,8 +78,8 @@ export default function StoreDetailPage() {
 
   // Calculate indices for onClick events
   const baoOffset = 1;
-  const baOffset = baoOffset + (product.beforeAfterOneImage?.length || 0);
-  const galleryOffset = baOffset + (product.beforeAfter?.length || 0);
+  const baOffset = baoOffset + (beforeAfter?.length || 0);
+  const galleryOffset = baOffset + (gallery?.length || 0);
 
   return (
     <main className="min-h-screen bg-background">
@@ -157,7 +170,7 @@ export default function StoreDetailPage() {
        
 
         {/* Comparisons Section */}
-        {(product.beforeAfter && product.beforeAfter.length > 0)  ? (
+        {(beforeAfter && beforeAfter.length > 0)  ? (
           <div className="mt-32">
             <header className="mb-12">
               <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">visuals / comparisons</span>
@@ -165,36 +178,10 @@ export default function StoreDetailPage() {
                 comparisons
               </h2>
             </header>
-
-            {/* Before After Sliders */}
-            {product.beforeAfter && product.beforeAfter.length > 0 && (
-              <div className="space-y-12 mb-12">
-                {product.beforeAfter.map((ba, i) => (
-                  <motion.div
-                    key={`ba-${i}`}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: i * 0.2 }}
-                    className="cursor-pointer"
-                  >
-                    <BeforeAfterSlider 
-                      before={ba.before} 
-                      after={ba.after} 
-                      category={`${product.category} / 0${i + 1}`}
-                      title="Comparison View"
-                      onFullScreen={() => setSelectedIdx(baOffset + i)}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            )}
-
-         
           </div>
         ) : null}
 
-        {(product.beforeAfterOneImage && product.beforeAfterOneImage.length > 0) ? (
+        {(beforeAfter && beforeAfter.length > 0) ? (
           <div className="mt-32">
             <header className="mb-12">
               <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">visuals / before after</span>
@@ -206,9 +193,9 @@ export default function StoreDetailPage() {
           
 
             {/* Single Large Result Images */}
-            {product.beforeAfterOneImage && product.beforeAfterOneImage.length > 0 && (
+            {beforeAfter && beforeAfter.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-20">
-                    {product.beforeAfterOneImage.map((img, i) => (
+                    {beforeAfter.map((img, i) => (
                         <motion.div
                             key={`bao-${i}`}
                             initial={{ opacity: 0, y: 30 }}
@@ -243,7 +230,7 @@ export default function StoreDetailPage() {
         ) : null}
 
         {/* Gallery Grid Section */}
-        {product.gallery && product.gallery.length > 0 && (
+        {gallery && gallery.length > 0 && (
           <div className="mt-32">
             <header className="mb-12">
               <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">visuals / examples</span>
@@ -252,7 +239,7 @@ export default function StoreDetailPage() {
               </h2>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-              {product.gallery.map((img, i) => (
+              {gallery.map((img, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0 }}

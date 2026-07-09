@@ -3,18 +3,22 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const previewPosts = [
-  { title: "The Gear I Use in 2025", date: "Feb 12", category: "Gear", slug: "the-gear-i-use-2025" },
-  { title: "Finding Light in shadows", date: "Jan 28", category: "Technique", slug: "finding-light-in-shadows" },
-  { title: "Jakarta Street Photography Guide", date: "Jan 15", category: "Travel", slug: "jakarta-street-photography-guide" },
-];
-
 export default function BlogSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [previewPosts, setPreviewPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/api/blog?published=true&limit=3")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPreviewPosts(data.data || []);
+      })
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

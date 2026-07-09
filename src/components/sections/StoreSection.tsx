@@ -5,18 +5,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import productsData from "@/data/products.json";
-
 export default function StoreSection() {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [previewProducts, setPreviewProducts] = useState<any[]>([]);
 
-  const previewProducts = [...productsData]
-    .sort((a, b) => b.id - a.id)
-    .slice(0, 3);
+  useEffect(() => {
+    fetch("/api/products?limit=3")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPreviewProducts(data.data || []);
+      })
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

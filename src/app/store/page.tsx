@@ -5,14 +5,22 @@ import FooterSection from "@/components/sections/FooterSection";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
-import products from "@/data/products.json";
+import { useState, useEffect } from "react";
 
 const categories = ["All", "Presets", "PowerGrades", "LUTs"];
 
 export default function StorePage() {
+  const [products, setProducts] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setProducts(data.data || []);
+      })
+      .catch(console.error);
+  }, []);
 
   const filteredProducts = activeCategory === "All" 
     ? products 
