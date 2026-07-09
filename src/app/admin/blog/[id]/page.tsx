@@ -11,7 +11,7 @@ export default function EditBlogPage({
   params: Promise<{ id: string }>;
 }) {
   const router = useRouter();
-  const [id, setId] = useState<string>("");
+  const [slug, setSlug] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -27,16 +27,15 @@ export default function EditBlogPage({
   useEffect(() => {
     const initParams = async () => {
       const { id: paramId } = await params;
-      setId(paramId);
+      setSlug(paramId);
     };
     initParams();
   }, [params]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
     const fetchPost = async () => {
-      // Try to fetch by slug
-      const result = await getBlogPost(id);
+      const result = await getBlogPost(slug);
       if (result.success && result.data) {
         setFormData(result.data);
       } else {
@@ -46,7 +45,7 @@ export default function EditBlogPage({
     };
 
     fetchPost();
-  }, [id]);
+  }, [slug]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

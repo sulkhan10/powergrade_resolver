@@ -3,57 +3,41 @@
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/sections/FooterSection";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useParams } from "next/navigation";
-
-const blogPosts = {
-  "the-gear-i-use-2025": {
-    title: "The Gear I Use in 2025",
-    date: "Feb 12, 2025",
-    category: "Gear",
-    image: "/assets/DSCF1147.jpg",
-    content: `
-      <ctrl42>ing into 2025, my workflow has shifted towards a more compact and efficient setup. photography is as much about the tools as it is about the vision, but having the right ones can truly liberate the creative process.
-
-      my primary camera remains the fujifilm x-series, known for its exceptional color science and tactile controls. it allows me to stay present in the moment rather than getting buried in menus.
-
-      in this post, i'll break down the specific lenses, filters, and accessories that have become essential to my daily carry.
-    `
-  },
-  "finding-light-in-shadows": {
-    title: "Finding Light in Shadows",
-    date: "Jan 28, 2025",
-    category: "Technique",
-    image: "/assets/DSCF1195.jpg",
-    content: `
-      as photographers, we are often taught to chase the light. but some of the most powerful stories are found where the light ends and the shadows begin. 
-
-      low-light photography isn't just about technical settings; it's about mood, mystery, and the emotion of the unknown. capturing the interplay between highlights and deep blacks is a deliberate choice that defines a cinematic aesthetic.
-
-      here are my thoughts on how to intentionally use shadows to create depth and focus in your compositions.
-    `
-  },
-  "jakarta-street-photography-guide": {
-    title: "Jakarta Street Photography Guide",
-    date: "Jan 15, 2025",
-    category: "Travel",
-    image: "/assets/DSCF0912.jpg",
-    content: `
-      jakarta is a city of contrasts. from the towering skyscrapers of sudirman to the chaotic charm of kota tua, there is a story on every corner if you're patient enough to wait for it.
-
-      street photography here requires a blend of boldness and respect. the heat, the traffic, and the sheer energy of the city can be overwhelming, but for a photographer, it's a playground of constant motion.
-
-      this guide covers my favorite locations, the best times to shoot, and how to navigate the city's complex urban landscape.
-    `
-  }
-};
+import { useState, useEffect } from "react";
 
 export default function BlogDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const post = blogPosts[slug as keyof typeof blogPosts];
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!post) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Post not found</div>;
+  useEffect(() => {
+    if (!slug) return;
+    fetch(`/api/blog/${slug}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPost(data.data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-accent/60 font-mono text-sm">Loading...</p>
+      </main>
+    );
+  }
+
+  if (!post) {
+    return (
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-accent/60 font-mono text-sm">Post not found</p>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-background">
@@ -67,26 +51,31 @@ export default function BlogDetailPage() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">
-              {post.category} / {post.date}
+              {new Date(post.created_at).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
             </span>
             <h1 className="text-5xl md:text-7xl font-syne font-bold text-accent lowercase tracking-tighter leading-[0.9] mb-12">
               {post.title}
             </h1>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            className="relative h-[60vh] w-full border border-accent/10 overflow-hidden"
-          >
-            <Image 
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover grayscale-[0.2]"
-            />
-          </motion.div>
+          {post.featured_image && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+              className="relative h-[60vh] w-full border border-accent/10 overflow-hidden"
+            >
+              <img 
+                src={post.featured_image}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          )}
         </header>
 
         <motion.div 
@@ -95,7 +84,7 @@ export default function BlogDetailPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="prose prose-invert max-w-none"
         >
-          {post.content.split('\n\n').map((paragraph, i) => (
+          {post.content.split('\n\n').map((paragraph: string, i: number) => (
             <p key={i} className="text-accent/70 font-mono text-base md:text-lg leading-relaxed mb-8 lowercase">
               {paragraph.trim()}
             </p>

@@ -97,7 +97,7 @@ export default function BlogPage() {
                   </td>
                   <td className="px-6 py-4 space-x-2">
                     <Link
-                      href={`/admin/blog/${post.id}`}
+                      href={`/admin/blog/${post.slug}`}
                       className="inline-block px-3 py-1 text-sm bg-accent/20 text-accent rounded hover:bg-accent/30 transition"
                     >
                       Edit
