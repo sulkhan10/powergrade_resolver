@@ -82,13 +82,12 @@ export default function BlogDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="prose prose-invert max-w-none"
+          className="max-w-none"
         >
-          {post.content.split('\n\n').map((paragraph: string, i: number) => (
-            <p key={i} className="text-accent/70 font-mono text-base md:text-lg leading-relaxed mb-8 lowercase">
-              {paragraph.trim()}
-            </p>
-          ))}
+          <div
+            className="text-accent/70 font-mono text-base md:text-lg leading-relaxed lowercase whitespace-pre-wrap"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </motion.div>
 
         <footer className="mt-24 pt-12 border-t border-accent/10">

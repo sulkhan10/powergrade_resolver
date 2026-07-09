@@ -52,6 +52,15 @@ async function seedDatabase() {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
 
+      CREATE TABLE IF NOT EXISTS portfolio_images (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        src TEXT NOT NULL,
+        alt TEXT NOT NULL,
+        category TEXT DEFAULT '',
+        display_order INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
       CREATE TABLE IF NOT EXISTS site_content (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         section_key TEXT UNIQUE NOT NULL,
@@ -73,6 +82,7 @@ async function seedDatabase() {
       CREATE INDEX IF NOT EXISTS idx_blog_published ON blog_posts(published);
       CREATE INDEX IF NOT EXISTS idx_product_images_product ON product_images(product_id);
       CREATE INDEX IF NOT EXISTS idx_site_content_key ON site_content(section_key);
+      CREATE INDEX IF NOT EXISTS idx_portfolio_display_order ON portfolio_images(display_order);
     `;
 
     const statements = schema

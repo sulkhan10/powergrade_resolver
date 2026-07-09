@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface Photo {
@@ -61,36 +60,29 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
         className="fixed inset-0 z-[200] bg-black flex items-center justify-center p-4 md:p-12"
       >
         <button
-        style={{ backgroundColor: "white", color: "black" }}
           onClick={onClose}
-          className="absolute top-6 right-6 md:top-8 md:right-8 text-white/40 hover:text-white font-mono text-[10px] md:text-xs lowercase z-[210] transition-colors 
-          bg-black
-          
-          "
+          className="absolute top-6 right-6 md:top-8 md:right-8 text-white/40 hover:text-white font-mono text-[10px] md:text-xs lowercase z-[210] transition-colors"
         >
           close / esc
         </button>
 
         <div className="absolute left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 bottom-8 md:bottom-12 z-[210] flex flex-col items-center md:items-start gap-4">
-          {/* <div 
-            style={{ backgroundColor: "white", color: "black" }}
-            className="px-5 py-3 border border-black/10 shadow-2xl flex flex-col gap-1.5 min-w-[200px]"
+          <div 
+            className="px-5 py-3 bg-black/80 border border-white/10 shadow-2xl flex flex-col gap-1.5 min-w-[200px]"
           >
-            <span className="text-black/40 font-mono text-[9px] lowercase tracking-[0.3em] block">
+            <span className="text-white/40 font-mono text-[9px] lowercase tracking-[0.3em] block">
               {currentIndex + 1} / {photos.length}
             </span>
-            <h3 className="text-black font-syne font-bold lowercase text-sm md:text-base tracking-tighter">
+            <h3 className="text-white font-syne font-bold lowercase text-sm md:text-base tracking-tighter">
               {currentPhoto.alt}
             </h3>
-          </div> */}
+          </div>
         </div>
 
         <div className="absolute left-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
-                  style={{ backgroundColor: "white", color: "black" }}
-
             onClick={handlePrev}
-            className="text-white/20 hover:text-white transition-colors  text-sm font-mono"
+            className="text-white/20 hover:text-white transition-colors text-sm font-mono"
           >
             ← prev
           </button>
@@ -98,8 +90,6 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
 
         <div className="absolute right-8 top-1/2 -translate-y-1/2 z-[210] hidden md:block">
           <button
-                  style={{ backgroundColor: "white", color: "black" }}
-
             onClick={handleNext}
             className="text-white/20 hover:text-white transition-colors text-sm font-mono"
           >
@@ -165,14 +155,11 @@ export default function Lightbox({ photos, currentIndex, onClose, onNavigate }: 
               }}
               className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              <div className="relative w-full h-full">
-                <Image
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
                   src={currentPhoto.src}
                   alt={currentPhoto.alt}
-                  fill
-                  className={`object-contain transition-opacity duration-700 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-                  sizes="100vw"
-                  priority
+                  className={`max-w-full max-h-full object-contain transition-opacity duration-700 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                   onLoad={() => setIsLoading(false)}
                   onError={() => setIsLoading(false)}
                 />

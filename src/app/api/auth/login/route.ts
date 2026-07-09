@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { query, insert } from "@/lib/db";
+import { query, ensureSchema } from "@/lib/db";
 import { LoginSchema } from "@/lib/db-schema";
 import { encrypt } from "@/lib/auth";
 import bcryptjs from "bcryptjs";
@@ -7,6 +7,7 @@ import { z } from "zod";
 
 export async function POST(request: NextRequest) {
   try {
+    await ensureSchema();
     const body = await request.json();
     const { username, password } = LoginSchema.parse(body);
 

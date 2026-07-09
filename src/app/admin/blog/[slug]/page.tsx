@@ -8,7 +8,7 @@ import ImageUpload from "@/components/ImageUpload";
 export default function EditBlogPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
   const router = useRouter();
   const [slug, setSlug] = useState<string>("");
@@ -26,8 +26,8 @@ export default function EditBlogPage({
 
   useEffect(() => {
     const initParams = async () => {
-      const { id: paramId } = await params;
-      setSlug(paramId);
+      const { slug: paramSlug } = await params;
+      setSlug(paramSlug);
     };
     initParams();
   }, [params]);

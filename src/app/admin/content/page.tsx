@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { query } from "@/lib/db";
 
 const EDITABLE_SECTIONS = [
   { key: "hero", title: "Hero Section", description: "Main hero content" },

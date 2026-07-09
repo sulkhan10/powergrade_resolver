@@ -2,12 +2,11 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #000000;
-  --accent: #E0B0FF; /* Updated light accent if needed, keeping white bg but maybe keep --accent same for now if it is pink? Wait, original: --accent: #FFE5F2; --background: #000000; --foreground: #FFE5F2; let's stick to black/white for bg/fg */
-  --accent: #000000; /* Let's check original... It was pink hue, let's keep original accents but invert if needed */
+  --foreground: #1a1a1a;
+  --accent: #C084FC;
+  --white: #FFFFFF;
 }
 
-/* Original dark mode colors */
 .dark {
   --background: #000000;
   --foreground: #FFE5F2;
@@ -31,11 +30,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-selection {
-  background-color: var(--accent);
-  color: var(--background);
 }
 
 ::selection {

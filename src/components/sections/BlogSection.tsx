@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function BlogSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [previewPosts, setPreviewPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/blog?published=true&limit=3")
@@ -17,7 +18,8 @@ export default function BlogSection() {
       .then((data) => {
         if (data.success) setPreviewPosts(data.data || []);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -50,25 +52,37 @@ export default function BlogSection() {
         </h2>
       </header>
 
+      {loading ? (
+        <div className="flex flex-col border-t border-accent/10">
+          {[1,2,3].map((i) => (
+            <div key={i} className="flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-accent/10 px-4">
+              <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
+                <div className="h-3 w-24 bg-accent/10 animate-pulse rounded" />
+                <div className="h-8 w-64 bg-accent/10 animate-pulse rounded" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
       <div ref={containerRef} className="flex flex-col border-t border-accent/10">
         {previewPosts.map((post, index) => (
           <Link
-            key={post.title}
+            key={post.id}
             href={`/blog/${post.slug}`}
             className="blog-item group flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-accent/10 hover:bg-accent/[0.02] transition-colors transition-all duration-300 px-4"
           >
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12">
-              <span className="text-accent/40 font-mono text-[10px] uppercase tracking-widest">{post.date}</span>
+              <span className="text-accent/40 font-mono text-[10px] uppercase tracking-widest">
+                {new Date(post.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+              </span>
               <h3 className="text-3xl font-syne font-bold text-accent group-hover:text-foreground transition-colors lowercase">
                 {post.title}
               </h3>
             </div>
-            <span className="text-accent/20 font-mono text-xs uppercase tracking-widest mt-4 md:mt-0 group-hover:text-accent/60">
-              {post.category}
-            </span>
           </Link>
         ))}
       </div>
+      )}
 
       <div className="mt-20 text-center">
         <Link 

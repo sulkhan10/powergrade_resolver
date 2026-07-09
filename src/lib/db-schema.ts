@@ -97,6 +97,25 @@ export type SiteContent = z.infer<typeof SiteContentSchema>;
 export type SiteContentInsert = z.infer<typeof SiteContentInsertSchema>;
 export type SiteContentUpdate = z.infer<typeof SiteContentUpdateSchema>;
 
+// Portfolio image schemas
+export const PortfolioImageInsertSchema = z.object({
+  src: z.string().min(1),
+  alt: z.string().min(1),
+  category: z.string().optional(),
+  display_order: z.number().optional(),
+});
+
+export const PortfolioImageUpdateSchema = PortfolioImageInsertSchema.partial();
+
+export const PortfolioImageSchema = PortfolioImageInsertSchema.extend({
+  id: z.number(),
+  created_at: z.string(),
+});
+
+export type PortfolioImage = z.infer<typeof PortfolioImageSchema>;
+export type PortfolioImageInsert = z.infer<typeof PortfolioImageInsertSchema>;
+export type PortfolioImageUpdate = z.infer<typeof PortfolioImageUpdateSchema>;
+
 // Admin user schemas
 export const AdminUserInsertSchema = z.object({
   username: z.string().min(3).max(50),

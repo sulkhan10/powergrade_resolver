@@ -72,12 +72,6 @@ export default function BeforeAfterSlider({ before, after, category, title, onFu
             className="object-cover"
             priority
           />
-          {/* <div 
-            style={{ backgroundColor: "white", color: "black" }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 border border-accent/10 font-mono text-[9px] lowercase tracking-widest z-10 transition-colors"
-          >
-            after
-          </div> */}
         </div>
 
         {/* Before Image (Clip) */}
@@ -94,12 +88,6 @@ export default function BeforeAfterSlider({ before, after, category, title, onFu
               priority
             />
           </div>
-          {/* <div 
-            style={{ backgroundColor: "white", color: "black" }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 border border-accent/10 font-mono text-[9px] lowercase tracking-widest z-10 transition-colors"
-          >
-            before
-          </div> */}
         </div>
 
         {/* Slider Handle */}
@@ -118,27 +106,11 @@ export default function BeforeAfterSlider({ before, after, category, title, onFu
       </div>
       
       {(title || category) && (
-        <div 
-          style={{ backgroundColor: "white", color: "black" }}
-          className="absolute top-6 left-6 p-4 z-30 pointer-events-none border border-accent/10 transition-colors"
-        >
-          {category && <span className="text-black/40 font-mono text-[9px] lowercase tracking-[0.3em] block mb-1">{category}</span>}
-          {title && <h3 className="text-black font-syne font-bold text-lg lowercase tracking-tighter">{title}</h3>}
+        <div className="absolute top-6 left-6 p-4 z-30 pointer-events-none bg-black/80 border border-white/10">
+          {category && <span className="text-white/40 font-mono text-[9px] lowercase tracking-[0.3em] block mb-1">{category}</span>}
+          {title && <h3 className="text-white font-syne font-bold text-lg lowercase tracking-tighter">{title}</h3>}
         </div>
       )}
-
-      {/* {onFullScreen && (
-        <button 
-          onClick={(e) => {
-            e.stopPropagation();
-            onFullScreen();
-          }}
-          style={{ backgroundColor: "white", color: "black" }}
-          className="absolute bottom-6 right-6 p-3 border border-accent/10 font-mono text-[10px] lowercase tracking-[0.2em] z-30"
-        >
-          view fullscreen
-        </button>
-      )} */}
     </div>
   );
 }

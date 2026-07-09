@@ -93,7 +93,7 @@ export default function ContactPage() {
             className="relative aspect-square md:aspect-auto h-full min-h-[400px] border border-accent/10 overflow-hidden group shadow-2xl"
           >
             <Image 
-              src="/assets/Screen Shot 2025-03-17 at 00.41.25.png"
+              src="/assets/profile-profile.png"
               alt="Wilie Effendi"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"

@@ -2,7 +2,6 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import Link from "next/link";
 
 import { useEffect, useRef, useState } from "react";
@@ -10,15 +9,21 @@ import Lightbox from "../Lightbox";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const previewPhotos = [
-  { src: "/assets/DSCF1195.jpg", alt: "Visual Stories", category: "Street" },
-  { src: "/assets/DSCF1147.jpg", alt: "Cinematic Scene", category: "Cinema" },
-  { src: "/assets/DSCF0912.jpg", alt: "Street Moment", category: "Urban" },
-];
-
 export default function PortfolioSection() {
+  const [photos, setPhotos] = useState<any[]>([]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("/api/portfolio")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPhotos((data.data || []).slice(0, 6));
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,7 +44,9 @@ export default function PortfolioSection() {
       }
     });
     return () => ctx.revert();
-  }, []);
+  }, [photos]);
+
+  if (photos.length === 0 && !loading) return null;
 
   return (
     <section id="portfolio" className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto bg-background">
@@ -50,23 +57,27 @@ export default function PortfolioSection() {
         </h2>
       </header>
 
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[1,2,3,4,5,6].map((i) => (
+            <div key={i} className="relative w-full aspect-[4/5] bg-accent/10 animate-pulse border border-accent/10" />
+          ))}
+        </div>
+      ) : (
       <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {previewPhotos.map((photo, index) => (
+        {photos.map((photo, index) => (
           <div
-            key={photo.src}
+            key={photo.id}
             className="portfolio-item relative group overflow-hidden cursor-pointer"
             onClick={() => setSelectedIdx(index)}
           >
             <div className="relative w-full aspect-[4/5] bg-accent/5 border border-accent/10 group-hover:border-accent/40 transition-colors duration-500">
-              <Image 
+              <img 
                 src={photo.src}
                 alt={photo.alt}
-                fill
-                className="object-cover grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
               />
               
-              {/* Bottom Info Bar - Hover Effect */}
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
                 <span className="text-accent/40 font-mono text-[9px] lowercase tracking-widest block mb-1">
                   {photo.category} / 0{index + 1}
@@ -76,7 +87,6 @@ export default function PortfolioSection() {
                 </h3>
               </div>
 
-              {/* View Indicator */}
               <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center text-foreground/40 font-mono text-[10px]">
                   +
@@ -86,6 +96,7 @@ export default function PortfolioSection() {
           </div>
         ))}
       </div>
+      )}
 
       <div className="mt-20 text-center">
         <Link 
@@ -96,9 +107,9 @@ export default function PortfolioSection() {
         </Link>
       </div>
 
-      {selectedIdx !== null && (
+      {selectedIdx !== null && photos.length > 0 && (
         <Lightbox 
-          photos={previewPhotos} 
+          photos={photos} 
           currentIndex={selectedIdx} 
           onClose={() => setSelectedIdx(null)}
           onNavigate={(index) => setSelectedIdx(index)}

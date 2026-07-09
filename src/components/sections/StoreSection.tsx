@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function StoreSection() {
   const gridRef = useRef<HTMLDivElement>(null);
   const [previewProducts, setPreviewProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/products?limit=3")
@@ -19,7 +20,8 @@ export default function StoreSection() {
       .then((data) => {
         if (data.success) setPreviewProducts(data.data || []);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -52,6 +54,17 @@ export default function StoreSection() {
         </h2>
       </header>
 
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[1,2,3].map((i) => (
+            <div key={i} className="flex flex-col gap-4 border border-accent/10 p-4 bg-foreground/[0.02]">
+              <div className="relative aspect-[4/5] bg-accent/10 animate-pulse" />
+              <div className="h-4 w-32 bg-accent/10 animate-pulse rounded mt-4" />
+              <div className="h-3 w-20 bg-accent/10 animate-pulse rounded mt-1" />
+            </div>
+          ))}
+        </div>
+      ) : (
       <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {previewProducts.map((product) => (
           <Link
@@ -79,6 +92,7 @@ export default function StoreSection() {
           </Link>
         ))}
       </div>
+      )}
 
       <div className="mt-20 text-center">
         <Link 

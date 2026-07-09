@@ -43,7 +43,7 @@ export default function PersonalSection() {
           className="relative h-[60vh] border border-accent/10 overflow-hidden"
         >
           <Image 
-            src="/assets/Screen Shot 2025-03-17 at 00.41.25.png"
+            src="/assets/profile-profile.png"
             alt="Wilie Effendi Personal"
             fill
             className="object-cover grayscale"

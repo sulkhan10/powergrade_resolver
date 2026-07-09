@@ -27,7 +27,7 @@ export default function PersonalPage() {
             className="lg:col-span-5 relative aspect-[4/5] w-full overflow-hidden border border-accent/10 shadow-2xl"
           >
             <Image 
-              src="/assets/Screen Shot 2025-03-17 at 00.41.25.png"
+              src="/assets/profile-profile.png"
               alt="Wilie Effendi Personal"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"

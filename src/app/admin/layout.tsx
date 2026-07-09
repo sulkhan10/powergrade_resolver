@@ -77,6 +77,12 @@ export default function AdminLayout({
             Blog Posts
           </Link>
           <Link
+            href="/admin/portfolio"
+            className="block px-4 py-2 rounded text-accent hover:bg-accent/10 transition"
+          >
+            Portfolio
+          </Link>
+          <Link
             href="/admin/content"
             className="block px-4 py-2 rounded text-accent hover:bg-accent/10 transition"
           >

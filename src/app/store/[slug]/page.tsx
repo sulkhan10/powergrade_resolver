@@ -36,28 +36,36 @@ export default function StoreDetailPage() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch(`/api/products?limit=100`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          const found = data.data.find((p: any) => p.slug === slug);
-          if (found) {
-            setProduct(found);
-            // Fetch detail with images
-            return fetch(`/api/products/${found.id}`);
+    
+    const load = async () => {
+      try {
+        const [listRes, slugRes] = await Promise.all([
+          fetch(`/api/products?limit=100`),
+          fetch(`/api/products?slug=${slug}&limit=1`),
+        ]);
+        const listData = await listRes.json();
+        const slugData = await slugRes.json();
+
+        const found = slugData.success && slugData.data?.length > 0
+          ? slugData.data[0]
+          : listData.data?.find((p: any) => p.slug === slug);
+
+        if (found) {
+          setProduct(found);
+          const detailRes = await fetch(`/api/products/${found.id}`);
+          const detail = await detailRes.json();
+          if (detail.success && detail.data) {
+            setGallery(detail.data.gallery || []);
+            setBeforeAfter(detail.data.before_after || []);
           }
         }
-        return null;
-      })
-      .then((detailRes) => detailRes?.json())
-      .then((detail) => {
-        if (detail?.success && detail.data) {
-          setGallery(detail.data.gallery || []);
-          setBeforeAfter(detail.data.before_after || []);
-        }
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
+      } catch (e) {
+        console.error(e);
+      }
+      setLoading(false);
+    };
+
+    load();
   }, [slug]);
 
   if (loading) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Loading...</div>;
@@ -78,8 +86,7 @@ export default function StoreDetailPage() {
 
   // Calculate indices for onClick events
   const baoOffset = 1;
-  const baOffset = baoOffset + (beforeAfter?.length || 0);
-  const galleryOffset = baOffset + (gallery?.length || 0);
+  const galleryOffset = baoOffset + (beforeAfter?.length || 0);
 
   return (
     <main className="min-h-screen bg-background">
@@ -169,18 +176,7 @@ export default function StoreDetailPage() {
 
        
 
-        {/* Comparisons Section */}
-        {(beforeAfter && beforeAfter.length > 0)  ? (
-          <div className="mt-32">
-            <header className="mb-12">
-              <span className="text-accent/40 font-mono text-[10px] lowercase tracking-[0.3em] block mb-4">visuals / comparisons</span>
-              <h2 className="text-4xl md:text-5xl font-syne font-bold text-accent lowercase tracking-tighter">
-                comparisons
-              </h2>
-            </header>
-          </div>
-        ) : null}
-
+        {/* Before/After Section */}
         {(beforeAfter && beforeAfter.length > 0) ? (
           <div className="mt-32">
             <header className="mb-12">
@@ -190,42 +186,34 @@ export default function StoreDetailPage() {
               </h2>
             </header>
 
-          
-
-            {/* Single Large Result Images */}
-            {beforeAfter && beforeAfter.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-20">
-                    {beforeAfter.map((img, i) => (
-                        <motion.div
-                            key={`bao-${i}`}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, delay: (i % 3) * 0.1 }}
-                            className="relative w-full aspect-[4/5] overflow-hidden group border border-accent/5 cursor-pointer"
-                        >
-                            <Image 
-                                src={img} 
-                                alt={`${product.name} result ${i + 1}`} 
-                                fill 
-                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                                priority
-                                 onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedIdx(baoOffset + i);
-                                }}
-                            />
-                            <div 
-                                style={{ backgroundColor: "white", color: "black" }}
-                                className="hidden lg:block absolute top-4 left-4 p-3 z-30 pointer-events-none border border-accent/10 transition-colors"
-                            >
-                                <span className="text-black/40 font-mono text-[8px] lowercase tracking-[0.3em] block mb-0.5">{product.category} / 0{i + 1}</span>
-                                <h3 className="text-black font-syne font-bold text-xs lowercase tracking-tighter">Result</h3>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-20">
+              {beforeAfter.map((img, i) => (
+                <motion.div
+                  key={`bao-${i}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: (i % 3) * 0.1 }}
+                  className="relative w-full aspect-[4/5] overflow-hidden group border border-accent/5 cursor-pointer"
+                >
+                  <Image 
+                    src={img} 
+                    alt={`${product.name} result ${i + 1}`} 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    priority
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedIdx(baoOffset + i);
+                    }}
+                  />
+                  <div className="hidden lg:block absolute top-4 left-4 p-3 z-30 pointer-events-none bg-black/80 border border-white/10">
+                    <span className="text-white/40 font-mono text-[8px] lowercase tracking-[0.3em] block mb-0.5">{product.category} / 0{i + 1}</span>
+                    <h3 className="text-white font-syne font-bold text-xs lowercase tracking-tighter">Result</h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         ) : null}
 

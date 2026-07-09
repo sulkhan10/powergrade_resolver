@@ -7,15 +7,26 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
+    const slug = searchParams.get("slug");
     const limit = parseInt(searchParams.get("limit") || "50");
     const offset = parseInt(searchParams.get("offset") || "0");
 
     let sql = "SELECT * FROM products";
     const params: any[] = [];
+    const conditions: string[] = [];
 
     if (category) {
-      sql += " WHERE category = ?";
+      conditions.push("category = ?");
       params.push(category);
+    }
+
+    if (slug) {
+      conditions.push("slug = ?");
+      params.push(slug);
+    }
+
+    if (conditions.length > 0) {
+      sql += " WHERE " + conditions.join(" AND ");
     }
 
     sql += " ORDER BY created_at DESC LIMIT ? OFFSET ?";

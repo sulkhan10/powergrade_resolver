@@ -122,6 +122,35 @@ export async function deleteBlogPost(slug: string): Promise<ApiResponse> {
   });
 }
 
+// Portfolio API
+export async function getPortfolioImages(): Promise<ApiResponse<any[]>> {
+  return apiFetch("/api/portfolio");
+}
+
+export async function getPortfolioImage(id: number): Promise<ApiResponse> {
+  return apiFetch(`/api/portfolio/${id}`);
+}
+
+export async function createPortfolioImage(data: any): Promise<ApiResponse> {
+  return apiFetch("/api/portfolio", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updatePortfolioImage(id: number, data: any): Promise<ApiResponse> {
+  return apiFetch(`/api/portfolio/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deletePortfolioImage(id: number): Promise<ApiResponse> {
+  return apiFetch(`/api/portfolio/${id}`, {
+    method: "DELETE",
+  });
+}
+
 // Auth API
 export async function login(username: string, password: string): Promise<ApiResponse> {
   return apiFetch("/api/auth/login", {

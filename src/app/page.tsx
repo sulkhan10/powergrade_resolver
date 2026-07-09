@@ -4,6 +4,7 @@ import BlogSection from "@/components/sections/BlogSection";
 import FooterSection from "@/components/sections/FooterSection";
 import HeroSection from "@/components/sections/HeroSection";
 import PersonalSection from "@/components/sections/PersonalSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import StoreSection from "@/components/sections/StoreSection";
 
@@ -14,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <StoreSection />
       <AboutSection />
-      {/* <PortfolioSection /> */}
+      <PortfolioSection />
       <PersonalSection />
       <ProcessSection />
       <BlogSection />
