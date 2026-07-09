@@ -13,6 +13,7 @@ export default function Navigation() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -58,10 +59,9 @@ export default function Navigation() {
 
   return (
     <>
-      <nav 
-        className={`fixed top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-6 md:px-10 transition-all duration-500 ease-in-out ${
-          scrolled ? "bg-background/60 backdrop-blur-xl py-4 shadow-lg border-b border-accent/5" : "bg-transparent"
-        }`}
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 flex justify-between items-start px-6 py-6 md:px-10 transition-all duration-500 ease-in-out ${scrolled ? "bg-background/60 backdrop-blur-xl py-4 shadow-lg border-b border-accent/5" : "bg-transparent"
+          }`}
       >
         <Link href="/" className="text-accent font-mono text-sm lowercase tracking-tight cursor-pointer hover:opacity-70 transition-opacity">
           wilie effendi
@@ -104,7 +104,7 @@ export default function Navigation() {
               onClick={() => setIsOpen(false)}
               className="fixed inset-0 z-[90] bg-background/40 backdrop-blur-sm"
             />
-            
+
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
